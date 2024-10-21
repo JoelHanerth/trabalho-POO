@@ -7,7 +7,7 @@ public class Configuracoes
 
 public static class Arena{
 
-    public static void moverParaFinalFila(Lado lado){
+    public static void MoverParaFinalFila(Lado lado){
         Guerreiro aux;
         for (int i = 0; i < 4; i++)
         {

@@ -1,5 +1,4 @@
 ﻿namespace trabalho_POO;
-
 class Program
 {
     static void Main(string[] args)
@@ -15,7 +14,7 @@ class Program
 
         lado1[0][0].Atacar();
 
-        Arena.moverParaFinalFila(lado1);
+        Arena.MoverParaFinalFila(lado1);
 
         for (int i = 0; i < Configuracoes.TAMANHO_FILA; i++){
             for (int k = 0; k < lado1[i].Count; k++){
