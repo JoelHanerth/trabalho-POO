@@ -1,11 +1,9 @@
-public class Gregos: Guerreiro{
+public abstract class Gregos: Guerreiro{
     public Gregos(int tipo, string nome, int idade, double peso ): base(tipo, nome,idade,peso){
 
     }
     
-    public override void Atacar(){
-        Console.WriteLine("grego atacou");
-    }
+    public override void Atacar(){}
     
 
     public override int Energia{

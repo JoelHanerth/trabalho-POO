@@ -41,9 +41,8 @@ public abstract class Guerreiro {
 
 
     public void ImprimirGuerreiro() {
-        Console.WriteLine("Nome: " + Nome);
-        Console.WriteLine("Idade: " + Idade);
-        Console.WriteLine("Peso: " + Peso);
+        Console.WriteLine("Tipo {0}: {1}, {2} anos, {3} kilos", Tipo, Nome, Idade, Peso);
+
     }
 
     public abstract void Atacar();
