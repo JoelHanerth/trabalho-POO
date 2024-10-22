@@ -3,7 +3,7 @@ public abstract class Gregos: Guerreiro{
 
     }
     
-    public override void Atacar(){}
+    public override void Atacar(Lado lado1, Lado lado2, int fila){}
     
 
     public override int Energia{

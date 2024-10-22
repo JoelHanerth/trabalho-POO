@@ -10,26 +10,20 @@ class Program
         lado1.ImprimirLado(1);
         lado2.ImprimirLado(2);
 
-        lado1.SomaPeso(1);
-        lado2.SomaPeso(2);
+        double peso1 = lado1.SomaPeso();
+        Console.WriteLine("Gregos e Nórdicos pesam {0}kg", peso1);
+        double peso2 = lado2.SomaPeso();
+        Console.WriteLine("Atlantes e Egípcios pesam {0}kg", peso2);
+
+        Arena.MaisVelho(lado1,lado2);
+
+        Arena.CampoBatalha(lado1, lado2);
+
+        lado1.ImprimirLado(1);
+        lado2.ImprimirLado(2);
+      
 
 
 
-
-    //     for (int i = 0; i < Configuracoes.TAMANHO_FILA; i++){
-    //         for (int k = 0; k < lado1[i].Count; k++){
-    //             lado1[i][k].ImprimirGuerreiro();    
-    //         }    
-    //     }
-
-    //     lado1[0][0].Atacar();
-
-    //     Arena.MoverParaFinalFila(lado1);
-
-    //     for (int i = 0; i < Configuracoes.TAMANHO_FILA; i++){
-    //         for (int k = 0; k < lado1[i].Count; k++){
-    //             lado1[i][k].ImprimirGuerreiro();    
-    //         }   
-    //     }
     }
 }

@@ -4,7 +4,7 @@ public abstract class Guerreiro {
     // atributos
     protected string nome;
     protected int idade, tipo, energia;
-    protected int danoAtaque, recuperarVida;
+    protected int danoAtaque;
     protected double peso;
 
     // metodo construtor
@@ -40,10 +40,6 @@ public abstract class Guerreiro {
     }
 
 
-    public void ImprimirGuerreiro() {
-        Console.WriteLine("Tipo {0}: {1}, {2} anos, {3} kilos", Tipo, Nome, Idade, Peso);
-
-    }
-
-    public abstract void Atacar();
+    public abstract void ImprimirGuerreiro();
+    public abstract void Atacar(Lado lado1, Lado lado2, int fila);
 }

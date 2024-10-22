@@ -28,8 +28,12 @@ public class Lado{
                 
 
                 switch (tipo){
-                    case 0:
+                    case 4:
                         ListaLado[i].Add(new Valquiria(tipo, nome, idade, peso));
+                        break;
+
+                    case 5:
+                        ListaLado[i].Add(new LoboDeFenris(tipo, nome, idade, peso));
                         break;
                 }
             }
@@ -37,27 +41,52 @@ public class Lado{
     }
 
     public void ImprimirLado(int n){
-        Console.WriteLine("LADO {0}",n);
+        Console.Write("\nLADO {0}",n);
 
         for (int i = 0; i < Configuracoes.TAMANHO_FILA; i++){
-            Console.WriteLine("Fila {0}",i+1);
-            for (int k = 0; k < ListaLado[i].Count; k++){
-                ListaLado[i][k].ImprimirGuerreiro();    
-            }    
+            Console.WriteLine("\nFila {0}",i+1);
+            
+                for (int k = 0; k < ListaLado[i].Count; k++){
+                    ListaLado[i][k].ImprimirGuerreiro();    
+                }
         }
     }
 
 
-    public void SomaPeso(int n){
+    public double SomaPeso(){
         double soma = 0;
 
         for (int i = 0; i < Configuracoes.TAMANHO_FILA; i++){
-            for (int k = 0; k < ListaLado[i].Count; k++){
-                soma += ListaLado[i][k].Peso;
-            }    
+            if (ListaLado[i].Count >0 && ListaLado[i]!= null){
+                for (int k = 0; k < ListaLado[i].Count; k++){
+                    soma += ListaLado[i][k].Peso;
+                }
+            }
         }
-        Console.WriteLine("LADO {0} pesa {1}kg",n,soma);
+        return soma;
     }
+
+
+    public Guerreiro? MaiorIdade()
+    {
+        Guerreiro? maior = null;
+
+        for (int i = 0; i < Configuracoes.TAMANHO_FILA; i++){
+            for (int k = 0; k < ListaLado[i].Count; k++){
+                if (maior == null){
+                    maior = ListaLado[i][k];
+                    continue;
+                }
+
+                // Atualiza maior se encontrar um Guerreiro mais velho
+                if (maior.Idade < ListaLado[i][k].Idade){
+                    maior = ListaLado[i][k];
+                }
+            }
+        }
+        return maior;
+    }
+
 
 
 // Indexador para permitir o acesso a ListaLado
