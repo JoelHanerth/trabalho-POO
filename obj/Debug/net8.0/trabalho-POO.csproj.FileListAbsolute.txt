@@ -13,3 +13,18 @@ C:\Users\adm\Documents\trabalho poo c#\trabalho-POO\obj\Debug\net8.0\refint\trab
 C:\Users\adm\Documents\trabalho poo c#\trabalho-POO\obj\Debug\net8.0\trabalho-POO.pdb
 C:\Users\adm\Documents\trabalho poo c#\trabalho-POO\obj\Debug\net8.0\trabalho-POO.genruntimeconfig.cache
 C:\Users\adm\Documents\trabalho poo c#\trabalho-POO\obj\Debug\net8.0\ref\trabalho-POO.dll
+D:\Users\haner\Downloads\c#\trabalho-POO\bin\Debug\net8.0\trabalho-POO.exe
+D:\Users\haner\Downloads\c#\trabalho-POO\bin\Debug\net8.0\trabalho-POO.deps.json
+D:\Users\haner\Downloads\c#\trabalho-POO\bin\Debug\net8.0\trabalho-POO.runtimeconfig.json
+D:\Users\haner\Downloads\c#\trabalho-POO\bin\Debug\net8.0\trabalho-POO.dll
+D:\Users\haner\Downloads\c#\trabalho-POO\bin\Debug\net8.0\trabalho-POO.pdb
+D:\Users\haner\Downloads\c#\trabalho-POO\obj\Debug\net8.0\trabalho-POO.GeneratedMSBuildEditorConfig.editorconfig
+D:\Users\haner\Downloads\c#\trabalho-POO\obj\Debug\net8.0\trabalho-POO.AssemblyInfoInputs.cache
+D:\Users\haner\Downloads\c#\trabalho-POO\obj\Debug\net8.0\trabalho-POO.AssemblyInfo.cs
+D:\Users\haner\Downloads\c#\trabalho-POO\obj\Debug\net8.0\trabalho-POO.csproj.CoreCompileInputs.cache
+D:\Users\haner\Downloads\c#\trabalho-POO\obj\Debug\net8.0\trabalho-POO.sourcelink.json
+D:\Users\haner\Downloads\c#\trabalho-POO\obj\Debug\net8.0\trabalho-POO.dll
+D:\Users\haner\Downloads\c#\trabalho-POO\obj\Debug\net8.0\refint\trabalho-POO.dll
+D:\Users\haner\Downloads\c#\trabalho-POO\obj\Debug\net8.0\trabalho-POO.pdb
+D:\Users\haner\Downloads\c#\trabalho-POO\obj\Debug\net8.0\trabalho-POO.genruntimeconfig.cache
+D:\Users\haner\Downloads\c#\trabalho-POO\obj\Debug\net8.0\ref\trabalho-POO.dll

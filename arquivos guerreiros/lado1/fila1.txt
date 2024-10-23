@@ -1,3 +1,4 @@
-5 loboA 20 1.80
-5 loboB 6 1.5
-5 loboC 490 1.7
+1 ciclopeA 20 1.80
+2 manticorab 6 1.5
+2 manticorac 490 1.7
+3 hidra1 490 1.7

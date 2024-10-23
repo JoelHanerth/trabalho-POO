@@ -1,3 +1,5 @@
 5 loboaa 20 1.80
 5 lobobb 6 1.5
-4 valquiriacc 4 1.7
+2 satiro1 4 1.7
+2 satiro2 6 1.5
+4 valquiriaccccccc 4 1.7

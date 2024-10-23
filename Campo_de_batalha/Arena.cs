@@ -82,12 +82,12 @@ public static class Arena{
     } 
 
 
-    private static void Ataques(Lado lado1, Lado lado2){
+    private static void Ataques(Lado lado1, Lado lado2, int round){
         // todos da primeira fila atacam
         for (int i = 0; i < Configuracoes.TAMANHO_FILA; i++){
             if (lado1[i].Count > 0){
                 Guerreiro guerreiro = lado1[i][0];
-                guerreiro.Atacar(lado1, lado2, i);
+                guerreiro.Atacar(lado1, lado2, i, round);
                 RemoverMortos(lado2);
             }            
         }
@@ -98,12 +98,12 @@ public static class Arena{
         int primeiroAtaque = SortearFila();
         
         if (primeiroAtaque == LADO1){
-            Ataques(lado1, lado2);
-            Ataques(lado2, lado1);
+            Ataques(lado1, lado2, 1);
+            Ataques(lado2, lado1, 2);
         }
         else{
-            Ataques(lado2, lado1);
-            Ataques(lado1, lado2);
+            Ataques(lado2, lado1, 1);
+            Ataques(lado1, lado2, 2);
         }
       
     }

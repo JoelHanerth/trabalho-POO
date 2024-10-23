@@ -3,14 +3,14 @@ public abstract class Gregos: Guerreiro{
 
     }
     
-    public override void Atacar(Lado lado1, Lado lado2, int fila){}
+    public override void Atacar(Lado lado1, Lado lado2, int fila, int round){}
     
 
     public override int Energia{
         get { return energia; }
         set {
-            if (energia + value > 100){ energia = 100; }
-            else{ energia = energia + value; }
+            if ( value > 100){ energia = 100; }
+            else{ energia =  value; }
         }
     }
 }

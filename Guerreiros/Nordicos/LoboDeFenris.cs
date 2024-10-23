@@ -1,7 +1,7 @@
 public class LoboDeFenris: Nordicos{
     private int danoAdicional = 8;
     public LoboDeFenris(int tipo, string nome, int idade, double peso ): base(tipo, nome,idade,peso){
-        danoAtaque = 40; 
+        DanoAtaque = 40; 
     }
 
     private int calcularDanoAtaqueAdicional(Lado lado1, int fila){
@@ -19,25 +19,16 @@ public class LoboDeFenris: Nordicos{
         return dano;
     }
         
-    public override void Atacar(Lado lado1, Lado lado2, int fila){
-        int filaOriginal = fila;
-        // ataca quem está na frente dela
-        // caso não tenha ninguem, ela deve atacar quem está do lado
-        for (int i = 0; i < Configuracoes.TAMANHO_FILA; i++)
-        {
-            if (lado2[fila].Count > 0){
-                int dano = danoAtaque+calcularDanoAtaqueAdicional(lado1, filaOriginal);
-                lado2[fila][0].Energia-=dano;
-                // lado2[fila][0].Energia = lado2[fila][0].Energia - (danoAtaque+calcularDanoAtaqueAdicional(lado1, filaOriginal));
-                Console.WriteLine("{0} atacou {1} com dano de {2} -> vida restante: {3}", nome, lado2[fila][0].Nome, dano,lado2[fila][0].Energia);
-                break;
-            }
-            else{
-                fila+=1;
-                if (fila >= Configuracoes.TAMANHO_FILA){
-                    fila = 0;
-                }
-            }        
+    public override void Atacar(Lado lado1, Lado lado2, int fila, int round){
+
+        int filaAtacado = IndiceAtacado(lado2, fila);
+
+        if (filaAtacado != -1){
+            Guerreiro guerreiroInimigo = lado2[filaAtacado][0];
+            // calcula ataque adiconal
+            int dano = DanoAtaque+calcularDanoAtaqueAdicional(lado1, fila);
+            guerreiroInimigo.Dano(dano);
+            Console.WriteLine("{0} atacou {1} com dano de {2} -> vida restante: {3}", Nome, guerreiroInimigo.Nome, dano,guerreiroInimigo.Energia);
         }
     }
 

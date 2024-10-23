@@ -1,1 +1,4 @@
-5 lobof 12 1.76
+1 ciclopeF 12 1.76
+2 manticorag 12 1.76
+2 manticorah 12 1.76
+2 manticorai 12 1.76

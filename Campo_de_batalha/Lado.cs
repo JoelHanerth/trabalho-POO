@@ -4,8 +4,7 @@ public class Lado{
 
     private List<Guerreiro>[] ListaLado = new List<Guerreiro>[Configuracoes.TAMANHO_FILA];
 
-    public Lado(string endereco){
-        
+    public Lado(string endereco, int nLado){
         // procura o endereço dos arquivos que estão naquela pasta
         string[] files = Directory.GetFiles(endereco);
 
@@ -20,22 +19,51 @@ public class Lado{
                 // retorna lista das palavras daquela linha
                 string[] Guerreiro = Guerreiros[k].Split(' ');
 
-                // converte o tipo das variaveis
-                int tipo = int.Parse(Guerreiro[0]);
-                string nome = Guerreiro[1];
-                int idade = int.Parse(Guerreiro[2]);
-                double peso = double.Parse(Guerreiro[3], CultureInfo.InvariantCulture);
-                
+                InstanciarGuerreiros(ListaLado[i],Guerreiro,nLado);
+            }
+        }
+    }
 
-                switch (tipo){
-                    case 4:
-                        ListaLado[i].Add(new Valquiria(tipo, nome, idade, peso));
-                        break;
 
-                    case 5:
-                        ListaLado[i].Add(new LoboDeFenris(tipo, nome, idade, peso));
-                        break;
-                }
+    private void InstanciarGuerreiros(List<Guerreiro> ListaLado, string [] infGuerreiro, int nLado){
+        // converte o tipo das variaveis
+        int tipo = int.Parse(infGuerreiro[0]);
+        string nome = infGuerreiro[1];
+        int idade = int.Parse(infGuerreiro[2]);
+        double peso = double.Parse(infGuerreiro[3], CultureInfo.InvariantCulture);
+        
+
+        if (nLado == 1){
+            switch (tipo){
+                case 1:
+                    ListaLado.Add(new Ciclope(tipo, nome, idade, peso));
+                    break;
+
+                case 2:
+                    ListaLado.Add(new Manticora(tipo, nome, idade, peso));
+                    break;
+
+                case 3:
+                    ListaLado.Add(new Hidra(tipo, nome, idade, peso));
+                    break;
+
+            }
+        }
+        else{
+            switch (tipo){
+                case 2:
+                    ListaLado.Add(new Satiro(tipo, nome, idade, peso));
+                    break;
+                case 3:
+                    ListaLado.Add(new Argus(tipo, nome, idade, peso));
+                    break;
+                case 4:
+                    ListaLado.Add(new Valquiria(tipo, nome, idade, peso));
+                    break;
+
+                case 5:
+                    ListaLado.Add(new LoboDeFenris(tipo, nome, idade, peso));
+                    break;
             }
         }
     }
