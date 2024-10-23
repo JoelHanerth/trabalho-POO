@@ -10,6 +10,19 @@ public static class Arena{
     private const int LADO1 = 0;
     private const int LADO2 = 1;
 
+    private static Guerreiro? ultimoAtacante = null, ultimoInimigo = null;
+
+    public static Guerreiro? UltimoAtacante{
+        get { return ultimoAtacante; }
+        set { ultimoAtacante = value; }
+    }
+
+    public static Guerreiro? UltimoInimigo{
+        get { return ultimoInimigo; }
+        set { ultimoInimigo = value; }
+    }
+
+
 
     private static int SortearFila(){
         Random random = new Random();
@@ -27,7 +40,7 @@ public static class Arena{
         }
     }
 
-    public static bool AlgumaListaTemElemento(Lado lado1){
+    public static bool TemGuerreiro(Lado lado1){
         for (int i = 0; i < Configuracoes.TAMANHO_FILA; i++)
         {
             if (lado1[i].Count > 0){ return true; }
@@ -76,18 +89,46 @@ public static class Arena{
                 aux = lado[i][0];
                 lado[i].RemoveAt(0);
                 lado[i].Add(aux);
-            }          
-            else{ Console.WriteLine("lista vazia"); }
+            }
         }
+    } 
+
+    // retorna o indice de quem eu devo atacar
+    // devo atacar quem está na minha frente - caso não tenha ninguem, pule pra proxima fila que contenha alguem
+    private static int IndiceAtacado(Lado lado2, int fila){
+         for (int i = 0; i < Configuracoes.TAMANHO_FILA; i++)
+        {
+            if (lado2[fila].Count > 0){
+                return fila;
+            }
+            else{
+                fila+=1;
+                if (fila >= Configuracoes.TAMANHO_FILA){
+                    fila = 0;
+                }
+            }        
+        }
+        return -1;
     } 
 
 
     private static void Ataques(Lado lado1, Lado lado2, int round){
         // todos da primeira fila atacam
-        for (int i = 0; i < Configuracoes.TAMANHO_FILA; i++){
-            if (lado1[i].Count > 0){
-                Guerreiro guerreiro = lado1[i][0];
-                guerreiro.Atacar(lado1, lado2, i, round);
+        for (int filaAtacante = 0; filaAtacante < Configuracoes.TAMANHO_FILA; filaAtacante++){
+
+            // verica se tem alguem naquela fila para atacar
+            if (lado1[filaAtacante].Count > 0 && TemGuerreiro(lado2)){
+                // procura o inimigo que será atacado
+                int filaInimigo = IndiceAtacado(lado2, filaAtacante);
+
+                Guerreiro guerreiroAtacante = lado1[filaAtacante][0];
+                Guerreiro guerreiroInimigo = lado2[filaInimigo][0];
+                // salva os dados dos ultimos combatentes
+                UltimoAtacante = guerreiroAtacante;
+                UltimoInimigo = guerreiroInimigo;
+
+                // ataque
+                guerreiroAtacante.Atacar(lado1, lado2, filaAtacante, filaInimigo, round);
                 RemoverMortos(lado2);
             }            
         }
@@ -118,26 +159,8 @@ public static class Arena{
             MoverParaFinalFila(lado1);
             MoverParaFinalFila(lado2);
 
-            if (!AlgumaListaTemElemento(lado1)){
-                if (!AlgumaListaTemElemento(lado2)){
-                    Console.WriteLine("EMPATE");
-                    break;
-                }
-                else{
-                    Console.WriteLine("Gregos e Nórdigos ganharam!");
-                    break;
-                }
-            }
-
-            if (!AlgumaListaTemElemento(lado2)){
-                if (!AlgumaListaTemElemento(lado1)){
-                    Console.WriteLine("EMPATE");
-                    break;
-                }
-                else{
-                    Console.WriteLine("Atlantes e Egípcios ganharam!");
-                    break;
-                }
+            if (!TemGuerreiro(lado1) || !TemGuerreiro(lado2)){
+                break;
             }
         }
         

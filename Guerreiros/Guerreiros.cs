@@ -59,25 +59,9 @@ public abstract class Guerreiro {
         else { return true; }
     }
 
-    // retorna o indice de quem eu devo atacar
-    // devo atacar quem está na minha frente - caso não tenha ninguem, pule pra proxima fila que contenha alguem
-    protected int IndiceAtacado(Lado lado2, int fila){
-         for (int i = 0; i < Configuracoes.TAMANHO_FILA; i++)
-        {
-            if (lado2[fila].Count > 0){
-                return fila;
-            }
-            else{
-                fila+=1;
-                if (fila >= Configuracoes.TAMANHO_FILA){
-                    fila = 0;
-                }
-            }        
-        }
-        return -1;
-    } 
+    
 
 
     public abstract void ImprimirGuerreiro();
-    public abstract void Atacar(Lado lado1, Lado lado2, int fila, int round);
+    public abstract void Atacar(Lado lado1, Lado lado2, int fila, int filaInimigo, int round);
 }

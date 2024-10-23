@@ -19,12 +19,12 @@ public class LoboDeFenris: Nordicos{
         return dano;
     }
         
-    public override void Atacar(Lado lado1, Lado lado2, int fila, int round){
+    public override void Atacar(Lado lado1, Lado lado2, int fila, int filaInimigo, int round){
 
-        int filaAtacado = IndiceAtacado(lado2, fila);
+        // int filaAtacado = IndiceAtacado(lado2, fila);
 
-        if (filaAtacado != -1){
-            Guerreiro guerreiroInimigo = lado2[filaAtacado][0];
+        if (filaInimigo != -1){
+            Guerreiro guerreiroInimigo = lado2[filaInimigo][0];
             // calcula ataque adiconal
             int dano = DanoAtaque+calcularDanoAtaqueAdicional(lado1, fila);
             guerreiroInimigo.Dano(dano);

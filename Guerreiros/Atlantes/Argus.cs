@@ -4,11 +4,11 @@ public class Argus: Nordicos{
         Energia = 60;
     }
         
-    public override void Atacar(Lado lado1, Lado lado2, int fila, int round){
+    public override void Atacar(Lado lado1, Lado lado2, int fila, int filaInimigo, int round){
 
-        int filaAtacado = IndiceAtacado(lado2, fila);
-        if (filaAtacado != -1){
-            Guerreiro guerreiroInimigo = lado2[filaAtacado][0];
+        // int filaAtacado = IndiceAtacado(lado2, fila);
+        if (filaInimigo != -1){
+            Guerreiro guerreiroInimigo = lado2[filaInimigo][0];
             guerreiroInimigo.Energia = 0;
             Console.WriteLine("{0} atacou {1} com dano MÁXIMO -> vida restante: {3}", Nome, guerreiroInimigo.Nome, DanoAtaque,guerreiroInimigo.Energia);
         }

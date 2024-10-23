@@ -3,13 +3,13 @@ public class Satiro: Nordicos{
         DanoAtaque = 10;
     }
         
-    public override void Atacar(Lado lado1, Lado lado2, int fila, int round){
+    public override void Atacar(Lado lado1, Lado lado2, int fila, int filaInimigo, int round){
 
-        int filaAtacado = IndiceAtacado(lado2, fila);
-        if (filaAtacado != -1){
-            for (int i = 0; i < lado2[filaAtacado].Count; i++)
+        // int filaAtacado = IndiceAtacado(lado2, fila);
+        if (filaInimigo != -1){
+            for (int i = 0; i < lado2[filaInimigo].Count; i++)
             {
-                Guerreiro guerreiroInimigo = lado2[filaAtacado][i];
+                Guerreiro guerreiroInimigo = lado2[filaInimigo][i];
                 guerreiroInimigo.Dano(DanoAtaque);
                 Console.WriteLine("{0} atacou {1} com dano de {2} -> vida restante: {3}", Nome, guerreiroInimigo.Nome, DanoAtaque,guerreiroInimigo.Energia);
             }

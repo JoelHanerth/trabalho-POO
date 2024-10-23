@@ -46,6 +46,9 @@ public class Lado{
                 case 3:
                     ListaLado.Add(new Hidra(tipo, nome, idade, peso));
                     break;
+                case 4:
+                    ListaLado.Add(new Valquiria(tipo, nome, idade, peso));
+                    break;
 
             }
         }
@@ -57,8 +60,8 @@ public class Lado{
                 case 3:
                     ListaLado.Add(new Argus(tipo, nome, idade, peso));
                     break;
-                case 4:
-                    ListaLado.Add(new Valquiria(tipo, nome, idade, peso));
+                case 4: 
+                    ListaLado.Add(new Anubita(tipo, nome, idade, peso));
                     break;
 
                 case 5:
