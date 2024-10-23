@@ -5,12 +5,27 @@ public class Configuracoes
 }
 
 
-public static class Arena{
-
+public class Arena{
     private const int LADO1 = 0;
     private const int LADO2 = 1;
-
     private static Guerreiro? ultimoAtacante = null, ultimoInimigo = null;
+
+    private Lado lado1, lado2;
+
+    public Arena(Lado lado1, Lado lado2){
+        this.lado1 = lado1; //equipe
+        this.lado2 = lado2;
+    }
+
+    public Lado Lado1{
+        get { return lado1; }
+    }
+
+    public Lado Lado2{
+        get { return lado2; }
+    }
+
+
 
     public static Guerreiro? UltimoAtacante{
         get { return ultimoAtacante; }
@@ -24,7 +39,7 @@ public static class Arena{
 
 
 
-    private static int SortearFila(){
+    private int SortearFila(){
         Random random = new Random();
         int numeroSorteado = random.Next(0, 2);
 
@@ -32,15 +47,16 @@ public static class Arena{
         return numeroSorteado;
     }
 
-    private static void RemoverMortos(List<Guerreiro>[] lado){
+    private void RemoverMortos(Lado lado){
         for (int i = 0; i < Configuracoes.TAMANHO_FILA; i++)
         {
+            // EstaVivo
         // Remover todos os personagens com vida <= 0
         lado[i].RemoveAll(p => p.Energia <= 0);
         }
     }
 
-    public static bool TemGuerreiro(List<Guerreiro>[] lado1){
+    public bool TemGuerreiro(Lado lado1){
         for (int i = 0; i < Configuracoes.TAMANHO_FILA; i++)
         {
             if (lado1[i].Count > 0){ return true; }
@@ -52,10 +68,10 @@ public static class Arena{
 
 
     // Método para comparar dois Guerreiros
-    public static void MaisVelho(List<Guerreiro>[] lado1, List<Guerreiro>[] lado2){
+    public void MaisVelho(){
 
-        Guerreiro? velho1 = Lado.MaiorIdade(lado1);
-        Guerreiro? velho2 = Lado.MaiorIdade(lado2);
+        Guerreiro? velho1 = lado1.MaiorIdade();
+        Guerreiro? velho2 = lado2.MaiorIdade();
 
         // Verifica se o primeiro guerreiro é nulo
         if (velho1 == null && velho2 == null){
@@ -81,7 +97,7 @@ public static class Arena{
 
     }
 
-    public static void MoverParaFinalFila(List<Guerreiro>[] lado){
+    public void MoverParaFinalFila(Lado lado){
         Guerreiro aux;
         for (int i = 0; i < 4; i++)
         {
@@ -95,7 +111,7 @@ public static class Arena{
 
     // retorna o indice de quem eu devo atacar
     // devo atacar quem está na minha frente - caso não tenha ninguem, pule pra proxima fila que contenha alguem
-    private static int IndiceAtacado(List<Guerreiro>[] lado2, int fila){
+    private int IndiceAtacado(Lado lado2, int fila){
          for (int i = 0; i < Configuracoes.TAMANHO_FILA; i++)
         {
             if (lado2[fila].Count > 0){
@@ -112,13 +128,14 @@ public static class Arena{
     } 
 
 
-    private static void Ataques(List<Guerreiro>[] lado1, List<Guerreiro>[] lado2, int round){
+    private  void Ataques(Lado lado1, Lado lado2, int round){
         // todos da primeira fila atacam
         for (int filaAtacante = 0; filaAtacante < Configuracoes.TAMANHO_FILA; filaAtacante++){
 
             // verica se tem alguem naquela fila para atacar
             if (lado1[filaAtacante].Count > 0 && TemGuerreiro(lado2)){
                 // procura o inimigo que será atacado
+
                 int filaInimigo = IndiceAtacado(lado2, filaAtacante);
 
                 Guerreiro guerreiroAtacante = lado1[filaAtacante][0];
@@ -127,15 +144,19 @@ public static class Arena{
                 UltimoAtacante = guerreiroAtacante;
                 UltimoInimigo = guerreiroInimigo;
 
+                // verifica se é guerreiro de pedra
+                // if (guerreiroAtacante.GetType == )
+
                 // ataque
                 guerreiroAtacante.Atacar(lado1, lado2, filaAtacante, filaInimigo, round);
-                guerreiroAtacante.EstaEnvenenado();
+
+                RemoverMortos(lado1);
                 RemoverMortos(lado2);
             }            
         }
     } 
 
-    private static void Ringue(List<Guerreiro>[] lado1, List<Guerreiro>[] lado2){
+    private void Ringue(){
  
         int primeiroAtaque = SortearFila();
         
@@ -150,10 +171,10 @@ public static class Arena{
       
     }
 
-    public static void CampoBatalha(List<Guerreiro>[] lado1, List<Guerreiro>[] lado2){
+    public void CampoBatalha(){
 
         while (true){
-            Ringue(lado1, lado2);
+            Ringue();
             RemoverMortos(lado1);
             RemoverMortos(lado2);
 

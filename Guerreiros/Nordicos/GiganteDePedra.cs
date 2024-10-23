@@ -1,12 +1,12 @@
-public class Valquiria: Nordicos{
+public class GiganteDePedra: Nordicos{
     private int recuperarVida = 20;
-    public Valquiria(int tipo, string nome, int idade, double peso ): base(tipo, nome,idade,peso){
-        DanoAtaque = 20;
+    public GiganteDePedra(int tipo, string nome, int idade, double peso ): base(tipo, nome,idade,peso){
+        DanoAtaque = 30;
+        Energia = 300;
     }
         
     public override void Atacar(Lado lado1, Lado lado2, int fila, int filaInimigo, int round){
 
-        // int filaAtacado = IndiceAtacado(lado2, fila);
         if (filaInimigo != -1){
             Guerreiro guerreiroInimigo = lado2[filaInimigo][0];
             guerreiroInimigo.Dano(DanoAtaque);
@@ -19,7 +19,7 @@ public class Valquiria: Nordicos{
             Console.WriteLine("{0} curou {1} com {2} de vida-> vida atual: {3}", Nome, lado1[fila][1].Nome, recuperarVida,lado1[fila][1].Energia);
             
         }
-
+        
         base.Atacar(lado1, lado2, fila, filaInimigo, round);
     }
 

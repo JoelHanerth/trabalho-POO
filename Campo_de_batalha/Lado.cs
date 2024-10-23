@@ -1,13 +1,10 @@
 using System.Globalization;
 
-public static class Lado{
+public class Lado{
 
-    
+    private List<Guerreiro>[] vetorFila = new List<Guerreiro>[Configuracoes.TAMANHO_FILA];
 
-    public  static List<Guerreiro>[] ConstrutorLado(string endereco, int nLado){
-        
-        List<Guerreiro>[] vetorFila = new List<Guerreiro>[Configuracoes.TAMANHO_FILA];
-
+    public Lado(string endereco, int nLado){
         // procura o endereço dos arquivos que estão naquela pasta
         string[] files = Directory.GetFiles(endereco);
 
@@ -25,11 +22,10 @@ public static class Lado{
                 InstanciarGuerreiros(vetorFila[i],infGuerreiro,nLado);
             }
         }
-        return vetorFila;
     }
 
 
-    private static void InstanciarGuerreiros(List<Guerreiro> fila, string [] infGuerreiro, int nLado){
+    private void InstanciarGuerreiros(List<Guerreiro> fila, string [] infGuerreiro, int nLado){
         // converte o tipo das variaveis
         int tipo = int.Parse(infGuerreiro[0]);
         string nome = infGuerreiro[1];
@@ -74,12 +70,11 @@ public static class Lado{
                 case 5:
                     fila.Add(new HomemEscorpiao(tipo, nome, idade, peso));
                     break;
-                
             }
         }
     }
 
-    public static void ImprimirLado(List<Guerreiro>[] vetorFila, int n){
+    public void ImprimirLado(int n){
         Console.Write("\nLADO {0}",n);
 
         for (int i = 0; i < Configuracoes.TAMANHO_FILA; i++){
@@ -92,7 +87,7 @@ public static class Lado{
     }
 
 
-    public static double SomaPeso(List<Guerreiro>[] vetorFila){
+    public double SomaPeso(){
         double soma = 0;
 
         for (int i = 0; i < Configuracoes.TAMANHO_FILA; i++){
@@ -106,7 +101,7 @@ public static class Lado{
     }
 
 
-    public static Guerreiro? MaiorIdade(List<Guerreiro>[] vetorFila)
+    public Guerreiro? MaiorIdade()
     {
         Guerreiro? maior = null;
 
@@ -128,9 +123,9 @@ public static class Lado{
 
 
 
-// // Indexador para permitir o acesso a ListaLado
-//     public List<Guerreiro> this[int index]
-//     {
-//         get { return vetorFila[index]; }
-//     }
+// Indexador para permitir o acesso a ListaLado
+    public List<Guerreiro> this[int index]
+    {
+        get { return vetorFila[index]; }
+    }
 }

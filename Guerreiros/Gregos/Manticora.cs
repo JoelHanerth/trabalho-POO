@@ -8,7 +8,7 @@ public class Manticora: Gregos{
         Console.WriteLine("Manticorea: {0}, {1} anos, {2} kilos, energia {3}", Nome, Idade, Peso, Energia);
     }
         
-    public override void Atacar(List<Guerreiro>[] lado1, List<Guerreiro>[] lado2, int fila, int filaInimigo, int round){
+    public override void Atacar(Lado lado1, Lado lado2, int fila, int filaInimigo, int round){
         
         // int filaAtacado = IndiceAtacado(lado2, fila);
 
@@ -20,17 +20,18 @@ public class Manticora: Gregos{
 
             try{
                 guerreiroInimigo = lado2[filaInimigo-1][0];
-                guerreiroInimigo.Dano(DanoAtaque);
+                guerreiroInimigo.Dano(danoAtaqueProximo);
                 Console.WriteLine("{0} atacou {1} com dano de {2} -> vida restante: {3}", Nome, guerreiroInimigo.Nome, danoAtaqueProximo,guerreiroInimigo.Energia);
             }catch{}
 
             try{
                 guerreiroInimigo = lado2[filaInimigo-1][0];
-                guerreiroInimigo.Dano(DanoAtaque);
+                guerreiroInimigo.Dano(danoAtaqueProximo);
                 Console.WriteLine("{0} atacou {1} com dano de {2} -> vida restante: {3}", Nome, guerreiroInimigo.Nome, danoAtaqueProximo,guerreiroInimigo.Energia);
             }catch{}
 
             
         }
+        base.Atacar(lado1, lado2, fila, filaInimigo, round);
     }
 }

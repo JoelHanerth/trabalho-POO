@@ -3,7 +3,7 @@ public class Anubita: Nordicos{
         DanoAtaque = 15;
     }
         
-    public override void Atacar(List<Guerreiro>[] lado1, List<Guerreiro>[] lado2, int fila, int filaInimigo, int round){
+    public override void Atacar(Lado lado1, Lado lado2, int fila, int filaInimigo, int round){
 
         // int filaAtacado = IndiceAtacado(lado2, fila);
         if (filaInimigo != -1){
@@ -16,6 +16,7 @@ public class Anubita: Nordicos{
             guerreiroInimigo.Dano(DanoAtaque);
             Console.WriteLine("{0} atacou {1} com dano de {2} -> vida restante: {3}", Nome, guerreiroInimigo.Nome, DanoAtaque,guerreiroInimigo.Energia);
         }
+        base.Atacar(lado1, lado2, fila, filaInimigo, round);
     }
 
     public override void ImprimirGuerreiro(){

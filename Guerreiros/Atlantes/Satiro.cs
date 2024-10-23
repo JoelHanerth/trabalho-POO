@@ -3,7 +3,7 @@ public class Satiro: Nordicos{
         DanoAtaque = 10;
     }
         
-    public override void Atacar(List<Guerreiro>[] lado1, List<Guerreiro>[] lado2, int fila, int filaInimigo, int round){
+    public override void Atacar(Lado lado1, Lado lado2, int fila, int filaInimigo, int round){
 
         // int filaAtacado = IndiceAtacado(lado2, fila);
         if (filaInimigo != -1){
@@ -15,6 +15,7 @@ public class Satiro: Nordicos{
             }
             
         }
+        base.Atacar(lado1, lado2, fila, filaInimigo, round);
     }
 
     public override void ImprimirGuerreiro(){

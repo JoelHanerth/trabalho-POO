@@ -3,10 +3,10 @@
 class Program
 {
 
-  static void ImprimirVendedor(List<Guerreiro>[] lado1, List<Guerreiro>[] lado2)
+  static void ImprimirVendedor(Arena arena)
 {
-    bool temGuerreiroLado1 = Arena.TemGuerreiro(lado1);
-    bool temGuerreiroLado2 = Arena.TemGuerreiro(lado2);
+    bool temGuerreiroLado1 = arena.TemGuerreiro(arena.Lado1);
+    bool temGuerreiroLado2 = arena.TemGuerreiro(arena.Lado2);
 
     if (!temGuerreiroLado1 && !temGuerreiroLado2)
     {
@@ -47,28 +47,35 @@ static void ImprimirUltimosAtacantes( string ladoVencedor)
     {
         // Lado lado1 = new Lado(@"C:\Users\adm\Documents\trabalho poo c#\trabalho-POO\arquivos guerreiros\lado1");
         // Lado lado2 = new Lado(@"C:\Users\adm\Documents\trabalho poo c#\trabalho-POO\arquivos guerreiros\lado2");
-        List<Guerreiro>[] lado1 = Lado.ConstrutorLado(@"arquivos guerreiros\lado1", 1);
-        List<Guerreiro>[] lado2 = Lado.ConstrutorLado(@"arquivos guerreiros\lado2", 2);
+        Lado lado1 = new Lado(@"arquivos guerreiros\lado1", 1);
+        Lado lado2 = new Lado(@"arquivos guerreiros\lado2", 2);
 
         // Lado lado1 = new Lado(@"arquivos guerreiros\lado1", 1);
         // Lado lado2 = new Lado(@"arquivos guerreiros\lado2", 2);
 
-        Lado.ImprimirLado(lado1,1);
-        Lado.ImprimirLado(lado2,2);
+        lado1.ImprimirLado(1);
+        lado2.ImprimirLado(2);
 
         // lado1.ImprimirLado(1);
         // lado2.ImprimirLado(2);
 
-        double peso1 = Lado.SomaPeso(lado1);
-        Console.WriteLine("Gregos e Nórdicos pesam {0}kg", peso1);
-        double peso2 = Lado.SomaPeso(lado2);
-        Console.WriteLine("Atlantes e Egípcios pesam {0}kg", peso2);
+        Console.WriteLine("Gregos e Nórdicos pesam {0}kg", lado1.SomaPeso());
+        Console.WriteLine("Atlantes e Egípcios pesam {0}kg", lado2.SomaPeso());
 
-        Arena.MaisVelho(lado1,lado2);
 
-        Arena.CampoBatalha(lado1, lado2);
+        Arena arena = new Arena(lado1, lado2);
+        arena.CampoBatalha();
 
-        ImprimirVendedor(lado1, lado2);
+        // criar lista;
+        // arena.addlado()
+
+        // arena.MaisVelho();
+
+        // Arena.MaisVelho(lado1,lado2);
+
+        // Arena.CampoBatalha(lado1, lado2);
+
+        ImprimirVendedor(arena);
 
         // lado1.ImprimirLado(1);
         // lado2.ImprimirLado(2);

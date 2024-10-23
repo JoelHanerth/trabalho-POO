@@ -3,7 +3,7 @@ public abstract class Gregos: Guerreiro{
 
     }
     
-    public override void Atacar(List<Guerreiro>[] lado1, List<Guerreiro>[] lado2, int fila, int filaInimigo, int round){}
+    // public override void Atacar(List<Guerreiro>[] lado1, List<Guerreiro>[] lado2, int fila, int filaInimigo, int round){}
     
 
     public override int Energia{
