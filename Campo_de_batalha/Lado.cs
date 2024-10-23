@@ -2,7 +2,7 @@ using System.Globalization;
 
 public class Lado{
 
-    private List<Guerreiro>[] ListaLado = new List<Guerreiro>[Configuracoes.TAMANHO_FILA];
+    private List<Guerreiro>[] vetorFila = new List<Guerreiro>[Configuracoes.TAMANHO_FILA];
 
     public Lado(string endereco, int nLado){
         // procura o endereço dos arquivos que estão naquela pasta
@@ -10,22 +10,22 @@ public class Lado{
 
         for (int i = 0; i < files.Length; i++) {
             // inicializa uma lista da posição dos vetores
-            ListaLado[i] = new List<Guerreiro>();
+            vetorFila[i] = new List<Guerreiro>();
 
             // retorna lista separada por linha
             string[] Guerreiros = File.ReadAllLines(files[i]);
 
             for (int k = 0; k < Guerreiros.Length; k++){
                 // retorna lista das palavras daquela linha
-                string[] Guerreiro = Guerreiros[k].Split(' ');
+                string[] infGuerreiro = Guerreiros[k].Split(' ');
 
-                InstanciarGuerreiros(ListaLado[i],Guerreiro,nLado);
+                InstanciarGuerreiros(vetorFila[i],infGuerreiro,nLado);
             }
         }
     }
 
 
-    private void InstanciarGuerreiros(List<Guerreiro> ListaLado, string [] infGuerreiro, int nLado){
+    private void InstanciarGuerreiros(List<Guerreiro> fila, string [] infGuerreiro, int nLado){
         // converte o tipo das variaveis
         int tipo = int.Parse(infGuerreiro[0]);
         string nome = infGuerreiro[1];
@@ -36,18 +36,18 @@ public class Lado{
         if (nLado == 1){
             switch (tipo){
                 case 1:
-                    ListaLado.Add(new Ciclope(tipo, nome, idade, peso));
+                    fila.Add(new Ciclope(tipo, nome, idade, peso));
                     break;
 
                 case 2:
-                    ListaLado.Add(new Manticora(tipo, nome, idade, peso));
+                    fila.Add(new Manticora(tipo, nome, idade, peso));
                     break;
 
                 case 3:
-                    ListaLado.Add(new Hidra(tipo, nome, idade, peso));
+                    fila.Add(new Hidra(tipo, nome, idade, peso));
                     break;
                 case 4:
-                    ListaLado.Add(new Valquiria(tipo, nome, idade, peso));
+                    fila.Add(new Valquiria(tipo, nome, idade, peso));
                     break;
 
             }
@@ -55,17 +55,17 @@ public class Lado{
         else{
             switch (tipo){
                 case 2:
-                    ListaLado.Add(new Satiro(tipo, nome, idade, peso));
+                    fila.Add(new Satiro(tipo, nome, idade, peso));
                     break;
                 case 3:
-                    ListaLado.Add(new Argus(tipo, nome, idade, peso));
+                    fila.Add(new Argus(tipo, nome, idade, peso));
                     break;
                 case 4: 
-                    ListaLado.Add(new Anubita(tipo, nome, idade, peso));
+                    fila.Add(new Anubita(tipo, nome, idade, peso));
                     break;
 
                 case 5:
-                    ListaLado.Add(new LoboDeFenris(tipo, nome, idade, peso));
+                    fila.Add(new LoboDeFenris(tipo, nome, idade, peso));
                     break;
             }
         }
@@ -77,8 +77,8 @@ public class Lado{
         for (int i = 0; i < Configuracoes.TAMANHO_FILA; i++){
             Console.WriteLine("\nFila {0}",i+1);
             
-                for (int k = 0; k < ListaLado[i].Count; k++){
-                    ListaLado[i][k].ImprimirGuerreiro();    
+                for (int k = 0; k < vetorFila[i].Count; k++){
+                    vetorFila[i][k].ImprimirGuerreiro();    
                 }
         }
     }
@@ -88,9 +88,9 @@ public class Lado{
         double soma = 0;
 
         for (int i = 0; i < Configuracoes.TAMANHO_FILA; i++){
-            if (ListaLado[i].Count >0 && ListaLado[i]!= null){
-                for (int k = 0; k < ListaLado[i].Count; k++){
-                    soma += ListaLado[i][k].Peso;
+            if (vetorFila[i].Count >0 && vetorFila[i]!= null){
+                for (int k = 0; k < vetorFila[i].Count; k++){
+                    soma += vetorFila[i][k].Peso;
                 }
             }
         }
@@ -103,15 +103,15 @@ public class Lado{
         Guerreiro? maior = null;
 
         for (int i = 0; i < Configuracoes.TAMANHO_FILA; i++){
-            for (int k = 0; k < ListaLado[i].Count; k++){
+            for (int k = 0; k < vetorFila[i].Count; k++){
                 if (maior == null){
-                    maior = ListaLado[i][k];
+                    maior = vetorFila[i][k];
                     continue;
                 }
 
                 // Atualiza maior se encontrar um Guerreiro mais velho
-                if (maior.Idade < ListaLado[i][k].Idade){
-                    maior = ListaLado[i][k];
+                if (maior.Idade < vetorFila[i][k].Idade){
+                    maior = vetorFila[i][k];
                 }
             }
         }
@@ -123,6 +123,6 @@ public class Lado{
 // Indexador para permitir o acesso a ListaLado
     public List<Guerreiro> this[int index]
     {
-        get { return ListaLado[index]; }
+        get { return vetorFila[index]; }
     }
 }
