@@ -129,6 +129,7 @@ public static class Arena{
 
                 // ataque
                 guerreiroAtacante.Atacar(lado1, lado2, filaAtacante, filaInimigo, round);
+                guerreiroAtacante.EstaEnvenenado();
                 RemoverMortos(lado2);
             }            
         }

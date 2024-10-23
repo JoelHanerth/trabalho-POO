@@ -8,6 +8,8 @@ public abstract class Guerreiro {
     private int danoAtaque;
     private double peso;
 
+    private bool envenenado;
+
     // metodo construtor
     public Guerreiro(int tipo, string nome, int idade, double peso ) {
         this.nome = nome;
@@ -35,6 +37,11 @@ public abstract class Guerreiro {
         get { return tipo; }
     }
 
+    public bool Envenenado{
+        get { return envenenado; }
+        set { envenenado = value; }
+    }
+
 
     public int DanoAtaque{
         get { return danoAtaque; }
@@ -59,6 +66,12 @@ public abstract class Guerreiro {
         else { return true; }
     }
 
+    public void EstaEnvenenado(){
+        if (Envenenado ){ 
+            Dano(5); 
+            Console.WriteLine("{0} está envenenado -> vida atual: {1}", Nome, Energia);
+            }
+    }
     
 
 

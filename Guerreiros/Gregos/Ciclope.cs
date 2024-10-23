@@ -20,9 +20,9 @@ public class Ciclope: Gregos{
         if (round == 1){
             // move o inimigo pro final da fila
             try{
-                Guerreiro aux = lado2[fila][0];
-                lado2[fila].RemoveAt(0);
-                lado2[fila].Add(aux);
+                Guerreiro aux = lado2[filaInimigo][0];
+                lado2[filaInimigo].RemoveAt(0);
+                lado2[filaInimigo].Add(aux);
             }
             catch{}
             

@@ -54,6 +54,10 @@ public static class Lado{
                     fila.Add(new Valquiria(tipo, nome, idade, peso));
                     break;
 
+                case 5:
+                    fila.Add(new LoboDeFenris(tipo, nome, idade, peso));
+                    break;
+
             }
         }
         else{
@@ -67,10 +71,10 @@ public static class Lado{
                 case 4: 
                     fila.Add(new Anubita(tipo, nome, idade, peso));
                     break;
-
                 case 5:
-                    fila.Add(new LoboDeFenris(tipo, nome, idade, peso));
+                    fila.Add(new HomemEscorpiao(tipo, nome, idade, peso));
                     break;
+                
             }
         }
     }
