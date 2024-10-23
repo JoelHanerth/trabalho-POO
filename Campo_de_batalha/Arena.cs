@@ -32,7 +32,7 @@ public static class Arena{
         return numeroSorteado;
     }
 
-    private static void RemoverMortos(Lado lado){
+    private static void RemoverMortos(List<Guerreiro>[] lado){
         for (int i = 0; i < Configuracoes.TAMANHO_FILA; i++)
         {
         // Remover todos os personagens com vida <= 0
@@ -40,7 +40,7 @@ public static class Arena{
         }
     }
 
-    public static bool TemGuerreiro(Lado lado1){
+    public static bool TemGuerreiro(List<Guerreiro>[] lado1){
         for (int i = 0; i < Configuracoes.TAMANHO_FILA; i++)
         {
             if (lado1[i].Count > 0){ return true; }
@@ -52,10 +52,10 @@ public static class Arena{
 
 
     // Método para comparar dois Guerreiros
-    public static void MaisVelho(Lado lado1, Lado lado2){
+    public static void MaisVelho(List<Guerreiro>[] lado1, List<Guerreiro>[] lado2){
 
-        Guerreiro? velho1 = lado1.MaiorIdade();
-        Guerreiro? velho2 = lado2.MaiorIdade();
+        Guerreiro? velho1 = Lado.MaiorIdade(lado1);
+        Guerreiro? velho2 = Lado.MaiorIdade(lado2);
 
         // Verifica se o primeiro guerreiro é nulo
         if (velho1 == null && velho2 == null){
@@ -81,7 +81,7 @@ public static class Arena{
 
     }
 
-    public static void MoverParaFinalFila(Lado lado){
+    public static void MoverParaFinalFila(List<Guerreiro>[] lado){
         Guerreiro aux;
         for (int i = 0; i < 4; i++)
         {
@@ -95,7 +95,7 @@ public static class Arena{
 
     // retorna o indice de quem eu devo atacar
     // devo atacar quem está na minha frente - caso não tenha ninguem, pule pra proxima fila que contenha alguem
-    private static int IndiceAtacado(Lado lado2, int fila){
+    private static int IndiceAtacado(List<Guerreiro>[] lado2, int fila){
          for (int i = 0; i < Configuracoes.TAMANHO_FILA; i++)
         {
             if (lado2[fila].Count > 0){
@@ -112,7 +112,7 @@ public static class Arena{
     } 
 
 
-    private static void Ataques(Lado lado1, Lado lado2, int round){
+    private static void Ataques(List<Guerreiro>[] lado1, List<Guerreiro>[] lado2, int round){
         // todos da primeira fila atacam
         for (int filaAtacante = 0; filaAtacante < Configuracoes.TAMANHO_FILA; filaAtacante++){
 
@@ -134,7 +134,7 @@ public static class Arena{
         }
     } 
 
-    private static void Ringue(Lado lado1, Lado lado2){
+    private static void Ringue(List<Guerreiro>[] lado1, List<Guerreiro>[] lado2){
  
         int primeiroAtaque = SortearFila();
         
@@ -149,7 +149,7 @@ public static class Arena{
       
     }
 
-    public static void CampoBatalha(Lado lado1, Lado lado2){
+    public static void CampoBatalha(List<Guerreiro>[] lado1, List<Guerreiro>[] lado2){
 
         while (true){
             Ringue(lado1, lado2);

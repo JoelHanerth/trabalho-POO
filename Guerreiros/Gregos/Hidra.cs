@@ -9,7 +9,7 @@ public class Hidra: Gregos{
         Console.WriteLine("Hidra: {0}, {1} anos, {2} kilos, energia {3}", Nome, Idade, Peso, Energia);
     }
         
-    public override void Atacar(Lado lado1, Lado lado2, int fila, int filaInimigo, int round){
+    public override void Atacar(List<Guerreiro>[] lado1, List<Guerreiro>[] lado2, int fila, int filaInimigo, int round){
         
         // int filaAtacado = IndiceAtacado(lado2, fila);
 

@@ -63,5 +63,5 @@ public abstract class Guerreiro {
 
 
     public abstract void ImprimirGuerreiro();
-    public abstract void Atacar(Lado lado1, Lado lado2, int fila, int filaInimigo, int round);
+    public abstract void Atacar(List<Guerreiro>[] lado1, List<Guerreiro>[] lado2, int fila, int filaInimigo, int round);
 }

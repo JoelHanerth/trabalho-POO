@@ -3,7 +3,7 @@
 class Program
 {
 
-  static void ImprimirVendedor(Lado lado1, Lado lado2)
+  static void ImprimirVendedor(List<Guerreiro>[] lado1, List<Guerreiro>[] lado2)
 {
     bool temGuerreiroLado1 = Arena.TemGuerreiro(lado1);
     bool temGuerreiroLado2 = Arena.TemGuerreiro(lado2);
@@ -17,16 +17,16 @@ class Program
     if (temGuerreiroLado1)
     {
         Console.WriteLine("Atlantes e Egípcios ganharam!");
-        ImprimirUltimosAtacantes(lado2, "Gregos e Nórdigos");
+        ImprimirUltimosAtacantes("Gregos e Nórdigos");
     }
     else
     {
         Console.WriteLine("Gregos e Nórdigos ganharam!");
-        ImprimirUltimosAtacantes(lado1, "Atlantes e Egípcios");
+        ImprimirUltimosAtacantes("Atlantes e Egípcios");
     }
 }
 
-static void ImprimirUltimosAtacantes(Lado ladoPerdedor, string ladoVencedor)
+static void ImprimirUltimosAtacantes( string ladoVencedor)
 {
     if (Arena.UltimoInimigo != null)
     {
@@ -47,16 +47,21 @@ static void ImprimirUltimosAtacantes(Lado ladoPerdedor, string ladoVencedor)
     {
         // Lado lado1 = new Lado(@"C:\Users\adm\Documents\trabalho poo c#\trabalho-POO\arquivos guerreiros\lado1");
         // Lado lado2 = new Lado(@"C:\Users\adm\Documents\trabalho poo c#\trabalho-POO\arquivos guerreiros\lado2");
+        List<Guerreiro>[] lado1 = Lado.ConstrutorLado(@"arquivos guerreiros\lado1", 1);
+        List<Guerreiro>[] lado2 = Lado.ConstrutorLado(@"arquivos guerreiros\lado2", 2);
 
-        Lado lado1 = new Lado(@"arquivos guerreiros\lado1", 1);
-        Lado lado2 = new Lado(@"arquivos guerreiros\lado2", 2);
+        // Lado lado1 = new Lado(@"arquivos guerreiros\lado1", 1);
+        // Lado lado2 = new Lado(@"arquivos guerreiros\lado2", 2);
 
-        lado1.ImprimirLado(1);
-        lado2.ImprimirLado(2);
+        Lado.ImprimirLado(lado1,1);
+        Lado.ImprimirLado(lado2,2);
 
-        double peso1 = lado1.SomaPeso();
+        // lado1.ImprimirLado(1);
+        // lado2.ImprimirLado(2);
+
+        double peso1 = Lado.SomaPeso(lado1);
         Console.WriteLine("Gregos e Nórdicos pesam {0}kg", peso1);
-        double peso2 = lado2.SomaPeso();
+        double peso2 = Lado.SomaPeso(lado2);
         Console.WriteLine("Atlantes e Egípcios pesam {0}kg", peso2);
 
         Arena.MaisVelho(lado1,lado2);

@@ -4,7 +4,7 @@ public class LoboDeFenris: Nordicos{
         DanoAtaque = 40; 
     }
 
-    private int calcularDanoAtaqueAdicional(Lado lado1, int fila){
+    private int calcularDanoAtaqueAdicional(List<Guerreiro>[] lado1, int fila){
         int dano = 0;
         for (int i = 1; i < lado1[fila].Count; i++)
         {
@@ -19,7 +19,7 @@ public class LoboDeFenris: Nordicos{
         return dano;
     }
         
-    public override void Atacar(Lado lado1, Lado lado2, int fila, int filaInimigo, int round){
+    public override void Atacar(List<Guerreiro>[] lado1, List<Guerreiro>[] lado2, int fila, int filaInimigo, int round){
 
         // int filaAtacado = IndiceAtacado(lado2, fila);
 

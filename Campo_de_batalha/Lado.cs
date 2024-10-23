@@ -1,10 +1,13 @@
 using System.Globalization;
 
-public class Lado{
+public static class Lado{
 
-    private List<Guerreiro>[] vetorFila = new List<Guerreiro>[Configuracoes.TAMANHO_FILA];
+    
 
-    public Lado(string endereco, int nLado){
+    public  static List<Guerreiro>[] ConstrutorLado(string endereco, int nLado){
+        
+        List<Guerreiro>[] vetorFila = new List<Guerreiro>[Configuracoes.TAMANHO_FILA];
+
         // procura o endereço dos arquivos que estão naquela pasta
         string[] files = Directory.GetFiles(endereco);
 
@@ -22,10 +25,11 @@ public class Lado{
                 InstanciarGuerreiros(vetorFila[i],infGuerreiro,nLado);
             }
         }
+        return vetorFila;
     }
 
 
-    private void InstanciarGuerreiros(List<Guerreiro> fila, string [] infGuerreiro, int nLado){
+    private static void InstanciarGuerreiros(List<Guerreiro> fila, string [] infGuerreiro, int nLado){
         // converte o tipo das variaveis
         int tipo = int.Parse(infGuerreiro[0]);
         string nome = infGuerreiro[1];
@@ -71,7 +75,7 @@ public class Lado{
         }
     }
 
-    public void ImprimirLado(int n){
+    public static void ImprimirLado(List<Guerreiro>[] vetorFila, int n){
         Console.Write("\nLADO {0}",n);
 
         for (int i = 0; i < Configuracoes.TAMANHO_FILA; i++){
@@ -84,7 +88,7 @@ public class Lado{
     }
 
 
-    public double SomaPeso(){
+    public static double SomaPeso(List<Guerreiro>[] vetorFila){
         double soma = 0;
 
         for (int i = 0; i < Configuracoes.TAMANHO_FILA; i++){
@@ -98,7 +102,7 @@ public class Lado{
     }
 
 
-    public Guerreiro? MaiorIdade()
+    public static Guerreiro? MaiorIdade(List<Guerreiro>[] vetorFila)
     {
         Guerreiro? maior = null;
 
@@ -120,9 +124,9 @@ public class Lado{
 
 
 
-// Indexador para permitir o acesso a ListaLado
-    public List<Guerreiro> this[int index]
-    {
-        get { return vetorFila[index]; }
-    }
+// // Indexador para permitir o acesso a ListaLado
+//     public List<Guerreiro> this[int index]
+//     {
+//         get { return vetorFila[index]; }
+//     }
 }
