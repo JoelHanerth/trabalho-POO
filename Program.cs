@@ -26,19 +26,16 @@ class Program
     }
 }
 
-static void ImprimirUltimosAtacantes( string ladoVencedor)
-{
-    if (Arena.UltimoInimigo != null)
-    {
+static void ImprimirUltimosAtacantes( string ladoVencedor){
+    if (Arena.UltimoInimigo != null){
         Console.Write($"O último a ser derrotado no lado dos {ladoVencedor} foi: ");
         Arena.UltimoInimigo.ImprimirGuerreiro();
 
-        if (Arena.UltimoAtacante != null)
-        {
+        if (Arena.UltimoAtacante != null){
             Console.WriteLine();
             Arena.UltimoAtacante.ImprimirGuerreiro();
             Console.Write($"transferiu o último ataque no ");
-            Arena.UltimoInimigo.ImprimirGuerreiro();
+            Arena.UltimoInimigo.ImprimirGuerreiro(); 
         }
     }
 }

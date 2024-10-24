@@ -4,10 +4,6 @@ public class Hidra: Gregos{
     public Hidra(int tipo, string nome, int idade, double peso ): base(tipo, nome,idade,peso){
         DanoAtaque = 50;
     }
-
-    public override void ImprimirGuerreiro(){
-        Console.WriteLine("Hidra: {0}, {1} anos, {2} kilos, energia {3}", Nome, Idade, Peso, Energia);
-    }
         
     public override void Atacar(Lado lado1, Lado lado2, int fila, int filaInimigo, int round){
         

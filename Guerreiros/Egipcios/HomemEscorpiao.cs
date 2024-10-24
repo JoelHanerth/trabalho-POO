@@ -11,8 +11,4 @@ public class HomemEscorpiao: Egipcios{
         Guerreiro guerreiroInimigo = lado2[filaInimigo][0];
         guerreiroInimigo.Envenenado = true;
     }
-
-    public override void ImprimirGuerreiro(){
-        Console.WriteLine("HomemEscorpiao: {0}, {1} anos, {2} kilos, energia {3}", Nome, Idade, Peso, Energia);
-    }
 }

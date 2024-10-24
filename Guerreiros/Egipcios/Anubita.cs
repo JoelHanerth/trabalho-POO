@@ -12,10 +12,5 @@ public class Anubita: Nordicos{
         guerreiroInimigo.Dano(DanoAtaque);
         Console.WriteLine("{0} atacou {1} com dano de {2} -> vida restante: {3}", Nome, guerreiroInimigo.Nome, DanoAtaque,guerreiroInimigo.Energia);
 
-        VerificarPrometeano(guerreiroInimigo, lado2, filaInimigo);
-    }
-
-    public override void ImprimirGuerreiro(){
-        Console.WriteLine("ARGUS: {0}, {1} anos, {2} kilos, energia {3}", Nome, Idade, Peso, Energia);
     }
 }

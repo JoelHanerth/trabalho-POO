@@ -8,19 +8,19 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\haner\\.nuget\\packages\\": {}
+    "C:\\Users\\adm\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Users\\haner\\Downloads\\trabalho giovane\\trabalho-POO\\trabalho-POO.csproj",
+      "projectUniqueName": "C:\\Users\\adm\\Documents\\trabalho\\trabalho-POO\\trabalho-POO.csproj",
       "projectName": "trabalho-POO",
-      "projectPath": "D:\\Users\\haner\\Downloads\\trabalho giovane\\trabalho-POO\\trabalho-POO.csproj",
-      "packagesPath": "C:\\Users\\haner\\.nuget\\packages\\",
-      "outputPath": "D:\\Users\\haner\\Downloads\\trabalho giovane\\trabalho-POO\\obj\\",
+      "projectPath": "C:\\Users\\adm\\Documents\\trabalho\\trabalho-POO\\trabalho-POO.csproj",
+      "packagesPath": "C:\\Users\\adm\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\adm\\Documents\\trabalho\\trabalho-POO\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\haner\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\adm\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"

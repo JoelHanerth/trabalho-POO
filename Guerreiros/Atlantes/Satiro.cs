@@ -12,8 +12,4 @@ public class Satiro: Nordicos{
         }
 
     }
-
-    public override void ImprimirGuerreiro(){
-        Console.WriteLine("Satiro: {0}, {1} anos, {2} kilos, energia {3}", Nome, Idade, Peso, Energia);
-    }
 }

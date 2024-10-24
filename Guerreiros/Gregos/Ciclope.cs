@@ -2,10 +2,6 @@ public class Ciclope: Gregos{
     public Ciclope(int tipo, string nome, int idade, double peso ): base(tipo, nome,idade,peso){
         DanoAtaque = 35;
     }
-
-    public override void ImprimirGuerreiro(){
-        Console.WriteLine("Ciclope: {0}, {1} anos, {2} kilos, energia {3}", Nome, Idade, Peso, Energia);
-    }
         
     public override void Atacar(Lado lado1, Lado lado2, int fila, int filaInimigo,int round){
         

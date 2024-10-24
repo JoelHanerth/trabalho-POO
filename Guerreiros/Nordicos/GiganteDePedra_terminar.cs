@@ -9,7 +9,4 @@ public class GiganteDePedra: Nordicos{
         base.Atacar(lado1, lado2, fila, filaInimigo, round);      
     }
 
-    public override void ImprimirGuerreiro(){
-        Console.WriteLine("Valquiria: {0}, {1} anos, {2} kilos, energia {3}", Nome, Idade, Peso, Energia);
-    }
 }

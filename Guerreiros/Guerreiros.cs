@@ -64,7 +64,7 @@ public abstract class Guerreiro {
     }
 
     
-    public void Dano(int dano) {
+    public virtual void Dano(int dano) {
         Energia -= dano;
     }
 
@@ -72,46 +72,31 @@ public abstract class Guerreiro {
         Energia += cura;
     }
 
+    // verificar prometeano
     public bool EstaVivo(){
         if (Energia <= 0 ){ return false; }
         else { return true; }
     }
 
-    public bool EstaEnvenenado(){
-        return Envenenado;
-    }
 
     public void VerificarVeneno(){
         // Se o guerreiro atacante está envenenado, ele sofre dano adicional
-        if (EstaEnvenenado()){ 
+        if (Envenenado){ 
             Dano(5); 
             Console.WriteLine("{0} está envenenado -> vida atual: {1}", Nome, Energia);
         }
     }
-    
-    public void VerificarPrometeano(Guerreiro guerreiroInimigo, Lado lado, int filaInimigo){
-        // por estar aqui, pode haver prometeanos que morreram e não foram dupilcados (porque tem ataques especificso dentro de cada tipo)
-        if (!guerreiroInimigo.EstaVivo() && guerreiroInimigo is Prometeano && guerreiroInimigo.energiaInicial>1) {
-            // devo criar duas copias do objeto mantico com metade da sua vida original
-            ((Prometeano)guerreiroInimigo).Duplicar(lado, filaInimigo);
-            Console.WriteLine("{0} foi duplicado!", guerreiroInimigo.Nome);
-        }
-    }
-
-    
+      
     public virtual void Atacar(Lado lado1, Lado lado2, int fila, int filaInimigo, int round){
         try{
             Guerreiro guerreiroInimigo = lado2[filaInimigo][0];
             guerreiroInimigo.Dano(DanoAtaque);
-            Console.WriteLine("{0} atacou {1} com dano de {2} -> vida restante: {3}", Nome, guerreiroInimigo.Nome, DanoAtaque,guerreiroInimigo.Energia);
-
-            // por estar aqui, pode haver prometeanos que morreram e não foram dupilcados (porque tem ataques especificso dentro de cada tipo)
-            VerificarPrometeano(guerreiroInimigo, lado2, filaInimigo);
+            Console.WriteLine("{0} {1} atacou {2} {3} com dano de {4} -> vida restante: {5}", this ,Nome, guerreiroInimigo.GetType() ,guerreiroInimigo.Nome, DanoAtaque,guerreiroInimigo.Energia);
         }
         catch{}
-        
-    
     }
 
-    public abstract void ImprimirGuerreiro();
+    public void ImprimirGuerreiro(){
+        Console.WriteLine("{0}: {1}, {2} anos, {3} kilos, energia {4}", this, Nome, Idade, Peso, Energia);
+    }
 }

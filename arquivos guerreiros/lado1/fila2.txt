@@ -1,4 +1,5 @@
 3 hidra2 490 1.7
+2 manticorac 490 1.7
 2 manticord 2 2.4
 2 manticorae 890 27.8
 3 hidra3 490 1.7

@@ -27,7 +27,4 @@ public class LoboDeFenris: Nordicos{
         DanoAtaque = danoInicial;
     }
 
-    public override void ImprimirGuerreiro(){
-        Console.WriteLine("Lobo de Fenris: {0}, {1} anos, {2} kilos, energia {3}", Nome, Idade, Peso, Energia);
-    }
 }

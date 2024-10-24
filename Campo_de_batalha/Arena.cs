@@ -50,6 +50,10 @@ public class Arena{
     private void RemoverMortos(Lado lado){
         for (int i = 0; i < Configuracoes.TAMANHO_FILA; i++)
         {
+            // if (!lado[i][i].EstaVivo()){
+            //     lado[i][i].VerificarPrometeano();
+
+            // }
             // EstaVivo
         // Remover todos os personagens com vida <= 0
         lado[i].RemoveAll(p => p.Energia <= 0);
@@ -149,6 +153,7 @@ public class Arena{
 
                 // ataque
                 guerreiroAtacante.Atacar(lado1, lado2, filaAtacante, filaInimigo, round);
+                guerreiroAtacante.VerificarVeneno();
 
                 RemoverMortos(lado1);
                 RemoverMortos(lado2);
