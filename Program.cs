@@ -77,8 +77,8 @@ static void ImprimirUltimosAtacantes( string ladoVencedor)
 
         ImprimirVendedor(arena);
 
-        // lado1.ImprimirLado(1);
-        // lado2.ImprimirLado(2);
+        lado1.ImprimirLado(1);
+        lado2.ImprimirLado(2);
 
         
       

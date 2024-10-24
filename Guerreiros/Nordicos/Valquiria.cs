@@ -6,21 +6,13 @@ public class Valquiria: Nordicos{
         
     public override void Atacar(Lado lado1, Lado lado2, int fila, int filaInimigo, int round){
 
-        // int filaAtacado = IndiceAtacado(lado2, fila);
-        if (filaInimigo != -1){
-            Guerreiro guerreiroInimigo = lado2[filaInimigo][0];
-            guerreiroInimigo.Dano(DanoAtaque);
-            Console.WriteLine("{0} atacou {1} com dano de {2} -> vida restante: {3}", Nome, guerreiroInimigo.Nome, DanoAtaque,guerreiroInimigo.Energia);
-        }
+        base.Atacar(lado1, lado2, fila, filaInimigo, round);
         
         // cura quem está atras dela
         if (lado1[fila].Count > 1){
             lado1[fila][1].Curar(recuperarVida);
             Console.WriteLine("{0} curou {1} com {2} de vida-> vida atual: {3}", Nome, lado1[fila][1].Nome, recuperarVida,lado1[fila][1].Energia);
-            
         }
-
-        base.Atacar(lado1, lado2, fila, filaInimigo, round);
     }
 
     public override void ImprimirGuerreiro(){

@@ -1,6 +1,6 @@
 public class Hidra: Gregos{
     private int danoAdicional = 5;
-    private int cura;
+    // private int cura;
     public Hidra(int tipo, string nome, int idade, double peso ): base(tipo, nome,idade,peso){
         DanoAtaque = 50;
     }
@@ -11,21 +11,14 @@ public class Hidra: Gregos{
         
     public override void Atacar(Lado lado1, Lado lado2, int fila, int filaInimigo, int round){
         
-        // int filaAtacado = IndiceAtacado(lado2, fila);
-
-        if (filaInimigo != -1){
-            Guerreiro guerreiroInimigo = lado2[filaInimigo][0];
-            guerreiroInimigo.Dano(DanoAtaque);
-            Console.WriteLine("{0} atacou {1} com dano de {2} -> vida restante: {3}", Nome, guerreiroInimigo.Nome, DanoAtaque,guerreiroInimigo.Energia);
-
-            if (!guerreiroInimigo.EstaVivo()){
-                DanoAtaque += danoAdicional;
-                Curar(20);
-            }
-        }
-
         base.Atacar(lado1, lado2, fila, filaInimigo, round);
 
+        // caso ela tenha matado o guerreiro - aumenta o dano e se cura
+        Guerreiro guerreiroInimigo = lado2[filaInimigo][0];
+        if (!guerreiroInimigo.EstaVivo()){
+            DanoAtaque += danoAdicional;
+            Curar(20);
+        }
 
     }
 }

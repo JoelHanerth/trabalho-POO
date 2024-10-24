@@ -5,17 +5,12 @@ public class Satiro: Nordicos{
         
     public override void Atacar(Lado lado1, Lado lado2, int fila, int filaInimigo, int round){
 
-        // int filaAtacado = IndiceAtacado(lado2, fila);
-        if (filaInimigo != -1){
-            for (int i = 0; i < lado2[filaInimigo].Count; i++)
-            {
-                Guerreiro guerreiroInimigo = lado2[filaInimigo][i];
-                guerreiroInimigo.Dano(DanoAtaque);
-                Console.WriteLine("{0} atacou {1} com dano de {2} -> vida restante: {3}", Nome, guerreiroInimigo.Nome, DanoAtaque,guerreiroInimigo.Energia);
-            }
-            
+        // ataca todo mundo da fila
+        for (int i = 0; i < lado2[filaInimigo].Count; i++)
+        {
+            base.Atacar(lado1, lado2, fila, i, round);
         }
-        base.Atacar(lado1, lado2, fila, filaInimigo, round);
+
     }
 
     public override void ImprimirGuerreiro(){

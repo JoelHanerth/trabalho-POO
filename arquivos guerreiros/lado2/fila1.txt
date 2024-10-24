@@ -1,5 +1,3 @@
 5 homemEscorpiao1 20 1.80
 5 homemEscorpiao2 6 1.5
-2 satiro1 4 1.7
-2 satiro2 6 1.5
 4 anubita1 4 1.7

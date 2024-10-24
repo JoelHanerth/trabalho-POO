@@ -58,6 +58,9 @@ public class Lado{
         }
         else{
             switch (tipo){
+                case 1:
+                    fila.Add(new Prometeano(tipo, nome, idade, peso));
+                    break;
                 case 2:
                     fila.Add(new Satiro(tipo, nome, idade, peso));
                     break;

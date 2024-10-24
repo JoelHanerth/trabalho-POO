@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\adm\\Documents\\trabalho Geovane\\trabalho-POO\\trabalho-POO.csproj": {}
+    "D:\\Users\\haner\\Downloads\\trabalho giovane\\trabalho-POO\\trabalho-POO.csproj": {}
   },
   "projects": {
-    "C:\\Users\\adm\\Documents\\trabalho Geovane\\trabalho-POO\\trabalho-POO.csproj": {
+    "D:\\Users\\haner\\Downloads\\trabalho giovane\\trabalho-POO\\trabalho-POO.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\adm\\Documents\\trabalho Geovane\\trabalho-POO\\trabalho-POO.csproj",
+        "projectUniqueName": "D:\\Users\\haner\\Downloads\\trabalho giovane\\trabalho-POO\\trabalho-POO.csproj",
         "projectName": "trabalho-POO",
-        "projectPath": "C:\\Users\\adm\\Documents\\trabalho Geovane\\trabalho-POO\\trabalho-POO.csproj",
-        "packagesPath": "C:\\Users\\adm\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\adm\\Documents\\trabalho Geovane\\trabalho-POO\\obj\\",
+        "projectPath": "D:\\Users\\haner\\Downloads\\trabalho giovane\\trabalho-POO\\trabalho-POO.csproj",
+        "packagesPath": "C:\\Users\\haner\\.nuget\\packages\\",
+        "outputPath": "D:\\Users\\haner\\Downloads\\trabalho giovane\\trabalho-POO\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\adm\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\haner\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
