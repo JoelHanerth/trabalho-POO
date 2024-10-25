@@ -5,11 +5,11 @@ public class LoboDeFenris: Nordicos{
         DanoAtaque = danoInicial; 
     }
 
-    private int calcularDanoAtaqueAdicional(Lado lado1, int fila){
+    private int calcularDanoAtaqueAdicional(Equipe equipe, int fila){
         int dano = 0;
-        for (int i = 1; i < lado1[fila].Count; i++)
+        for (int i = 1; i < equipe[fila].Count; i++)
         {
-            if (lado1[fila][i].Tipo == lado1[fila][0].Tipo){
+            if (equipe[fila][i].Tipo == equipe[fila][0].Tipo){
                 dano += danoAdicional;
             }
             else{
@@ -20,10 +20,10 @@ public class LoboDeFenris: Nordicos{
         return dano;
     }
         
-    public override void Atacar(Lado lado1, Lado lado2, int fila, int filaInimigo, int round){
+    public override void Atacar(Equipe equipe1, Equipe equipe2, int fila, int filaInimigo, int round){
         
-        DanoAtaque = DanoAtaque + calcularDanoAtaqueAdicional(lado1, fila);
-        base.Atacar(lado1, lado2, fila, filaInimigo, round);
+        DanoAtaque = DanoAtaque + calcularDanoAtaqueAdicional(equipe1, fila);
+        base.Atacar(equipe1, equipe2, fila, filaInimigo, round);
         DanoAtaque = danoInicial;
     }
 

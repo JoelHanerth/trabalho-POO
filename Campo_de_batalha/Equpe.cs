@@ -1,10 +1,10 @@
 using System.Globalization;
 
-public class Lado
+public class Equipe
 {
     private List<Guerreiro>[] vetorFila = new List<Guerreiro>[Configuracoes.TAMANHO_FILA];
 
-    public Lado(string endereco, int nLado)
+    public Equipe(string endereco, int nLado)
     {
         // procura o endereço dos arquivos que estão naquela pasta
         string[] files = Directory.GetFiles(endereco);
@@ -99,7 +99,7 @@ private void InstanciarGuerreiros(List<Guerreiro> fila, string[] infGuerreiro, i
     
 }
 
-    public void ImprimirLado(int n)
+    public void ImprimirEquipe(int n)
     {
         Console.Write("\nLADO {0}", n);
 

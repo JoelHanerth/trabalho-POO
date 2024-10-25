@@ -1,32 +1,26 @@
-
 public abstract class Guerreiro {
 
-    // atributos
+    // Atributos
     private string nome;
     private int idade, tipo;
     private int danoAtaque;
     private double peso;
     protected int energia;
-    private int energiaInicial;
-    
-
     private bool envenenado;
 
-    // metodo construtor
-    public Guerreiro(int tipo, string nome, int idade, double peso ) {
+    // Construtor
+    public Guerreiro(int tipo, string nome, int idade, double peso) {
         this.tipo = tipo;
         this.nome = nome;
         this.idade = idade;
         this.peso = peso;
         this.energia = 100;
-        this.energiaInicial = energia;
         this.envenenado = false;
         this.danoAtaque = 0;
-
     }
 
-    //get e set
-    public string Nome{
+    // Propriedades get e set
+    public string Nome {
         get { return nome; }
     }
 
@@ -42,28 +36,22 @@ public abstract class Guerreiro {
         get { return tipo; }
     }
 
-    public bool Envenenado{
+    public bool Envenenado {
         get { return envenenado; }
         set { envenenado = value; }
     }
 
-
-    public int DanoAtaque{
+    public int DanoAtaque {
         get { return danoAtaque; }
         set { danoAtaque = value; }
     }
 
-    public virtual int Energia{
+    public virtual int Energia {
         get { return energia; }
-        set{ energia = value; }
+        set { energia = value; }
     }
 
-    public int EnergiaInicial {
-        get { return energiaInicial; }
-        set { energiaInicial = value; }
-    }
-
-    
+    // Métodos
     public virtual void Dano(int dano) {
         Energia -= dano;
     }
@@ -72,31 +60,29 @@ public abstract class Guerreiro {
         Energia += cura;
     }
 
-    // verificar prometeano
-    public bool EstaVivo(){
-        if (Energia <= 0 ){ return false; }
-        else { return true; }
+    public bool EstaVivo() {
+        return Energia > 0;
     }
 
-
-    public void VerificarVeneno(){
-        // Se o guerreiro atacante está envenenado, ele sofre dano adicional
-        if (Envenenado){ 
+    public void VerificarVeneno() {
+        if (Envenenado) { 
             Dano(5); 
             Console.WriteLine("{0} está envenenado -> vida atual: {1}", Nome, Energia);
         }
     }
-      
-    public virtual void Atacar(Lado lado1, Lado lado2, int fila, int filaInimigo, int round){
-        try{
-            Guerreiro guerreiroInimigo = lado2[filaInimigo][0];
+
+    public virtual void Atacar(Equipe equipe1, Equipe equipe2, int fila, int filaInimigo, int round) {
+        try {
+            Guerreiro guerreiroInimigo = equipe2[filaInimigo][0];
             guerreiroInimigo.Dano(DanoAtaque);
-            Console.WriteLine("{0} {1} atacou {2} {3} com dano de {4} -> vida restante: {5}", this ,Nome, guerreiroInimigo.GetType() ,guerreiroInimigo.Nome, DanoAtaque,guerreiroInimigo.Energia);
+            Console.WriteLine("{0} {1} atacou {2} {3} com dano de {4} -> vida restante: {5}", this, Nome, guerreiroInimigo.GetType(), guerreiroInimigo.Nome, DanoAtaque, guerreiroInimigo.Energia);
+        } 
+        catch {
+            // Exceção silenciosa para tratamento de ataque inválido
         }
-        catch{}
     }
 
-    public void ImprimirGuerreiro(){
+    public void ImprimirGuerreiro() {
         Console.WriteLine("{0}: {1}, {2} anos, {3} kilos, energia {4}", this, Nome, Idade, Peso, Energia);
     }
 }

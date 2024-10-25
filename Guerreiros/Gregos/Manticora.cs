@@ -6,7 +6,7 @@ public class Manticora: Gregos{
         DanoAtaque = danoAtaqueBase;
     }
         
-    public override void Atacar(Lado lado1, Lado lado2, int fila, int filaInimigo, int round){
+    public override void Atacar(Equipe equipe1, Equipe equipe2, int fila, int filaInimigo, int round){
         // base.Atacar(lado1, lado2, fila, filaInimigo, round);
         // ataca as pessoas da frente e do lado
         for (int i = -1; i <= 1; i++)  
@@ -14,7 +14,7 @@ public class Manticora: Gregos{
             if (i == 0) { DanoAtaque = danoAtaqueBase; }
             else { DanoAtaque = danoAtaqueProximo; }
 
-            base.Atacar(lado1, lado2, fila, filaInimigo+i, round);
+            base.Atacar(equipe1, equipe2, fila, filaInimigo+i, round);
         }
 
 

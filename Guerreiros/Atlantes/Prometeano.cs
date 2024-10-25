@@ -1,19 +1,28 @@
 public class Prometeano : Nordicos
 {
     // Novos atributos para armazenar Lado e a fila do Prometeano
-    private Lado ladoAtual;
+    private Equipe equipeAtual;
     private int filaAtual;
+    private int energiaInicial;
 
     public Prometeano(int tipo, string nome, int idade, double peso) : base(tipo, nome, idade, peso)
     {
         DanoAtaque = 10;
-        ladoAtual = null!;
+        equipeAtual = null!;
         filaAtual = -1;
+        energiaInicial = Energia;
+
+    }
+
+
+    public int EnergiaInicial {
+        get { return energiaInicial; }
+        set { energiaInicial = value; }
     }
 
     // Métodos para definir o lado e a fila onde o Prometeano está
-    public void DefinirPosicao(Lado lado, int fila){
-        ladoAtual = lado;
+    public void DefinirPosicao(Equipe equipe, int fila){
+        equipeAtual = equipe;
         filaAtual = fila;
     }
 
@@ -27,9 +36,9 @@ public class Prometeano : Nordicos
         }
     }
 
-    public override void Atacar(Lado lado1, Lado lado2, int fila, int filaInimigo, int round)
+    public override void Atacar(Equipe equipe1, Equipe equipe2, int fila, int filaInimigo, int round)
     {
-        base.Atacar(lado1, lado2, fila, filaInimigo, round);
+        base.Atacar(equipe1, equipe2, fila, filaInimigo, round);
     }
 
     public void Duplicar()
@@ -47,15 +56,15 @@ public class Prometeano : Nordicos
         prometeano2.Energia = prometeano2.EnergiaInicial;
 
         // Define a mesma posição (Lado e fila) para os descendentes
-        prometeano1.DefinirPosicao(ladoAtual, filaAtual);
-        prometeano2.DefinirPosicao(ladoAtual, filaAtual);
+        prometeano1.DefinirPosicao(equipeAtual, filaAtual);
+        prometeano2.DefinirPosicao(equipeAtual, filaAtual);
 
         // Imprime informações dos novos Prometeanos
         prometeano1.ImprimirGuerreiro();
         prometeano2.ImprimirGuerreiro();
 
         // Adiciona os descendentes ao final da fila de guerreiros
-        ladoAtual[filaAtual].Add(prometeano1);
-        ladoAtual[filaAtual].Add(prometeano2);
+        equipeAtual[filaAtual].Add(prometeano1);
+        equipeAtual[filaAtual].Add(prometeano2);
     }
 }

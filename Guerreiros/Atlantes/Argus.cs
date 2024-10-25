@@ -4,8 +4,8 @@ public class Argus: Nordicos{
         Energia = 60;
     }
         
-    public override void Atacar(Lado lado1, Lado lado2, int fila, int filaInimigo, int round){
-        DanoAtaque = lado2[filaInimigo][0].Energia; 
-        base.Atacar(lado1, lado2, fila, filaInimigo, round);
+    public override void Atacar(Equipe equipe1, Equipe equipe2, int fila, int filaInimigo, int round){
+        DanoAtaque = equipe2[filaInimigo][0].Energia; 
+        base.Atacar(equipe1, equipe2, fila, filaInimigo, round);
     }
 }

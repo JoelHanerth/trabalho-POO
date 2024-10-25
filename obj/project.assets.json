@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\adm\\Documents\\trabalho\\trabalho-POO\\trabalho-POO.csproj",
+      "projectUniqueName": "C:\\Users\\adm\\Documents\\trabalho giovane\\trabalho-POO\\trabalho-POO.csproj",
       "projectName": "trabalho-POO",
-      "projectPath": "C:\\Users\\adm\\Documents\\trabalho\\trabalho-POO\\trabalho-POO.csproj",
+      "projectPath": "C:\\Users\\adm\\Documents\\trabalho giovane\\trabalho-POO\\trabalho-POO.csproj",
       "packagesPath": "C:\\Users\\adm\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\adm\\Documents\\trabalho\\trabalho-POO\\obj\\",
+      "outputPath": "C:\\Users\\adm\\Documents\\trabalho giovane\\trabalho-POO\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\adm\\AppData\\Roaming\\NuGet\\NuGet.Config"

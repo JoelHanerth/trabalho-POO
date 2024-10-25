@@ -3,12 +3,12 @@ public class HomemEscorpiao: Egipcios{
         DanoAtaque = 20;
     }
         
-    public override void Atacar(Lado lado1, Lado lado2, int fila, int filaInimigo, int round){
+    public override void Atacar(Equipe equipe1, Equipe equipe2, int fila, int filaInimigo, int round){
 
-        base.Atacar(lado1, lado2, fila, filaInimigo, round);
+        base.Atacar(equipe1, equipe2, fila, filaInimigo, round);
 
         // envenena o guerreiro atacado
-        Guerreiro guerreiroInimigo = lado2[filaInimigo][0];
+        Guerreiro guerreiroInimigo = equipe2[filaInimigo][0];
         guerreiroInimigo.Envenenado = true;
     }
 }
