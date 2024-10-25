@@ -8,17 +8,16 @@ public class Prometeano : Nordicos
     public Prometeano(int tipo, string nome, int idade, double peso) : base(tipo, nome, idade, peso)
     {
         DanoAtaque = 10;
+        energiaInicial = Energia;
         equipeAtual = null!;
         filaAtual = -1;
-        energiaInicial = Energia;
-
     }
-
 
     public int EnergiaInicial {
         get { return energiaInicial; }
         set { energiaInicial = value; }
     }
+    
 
     // Métodos para definir o lado e a fila onde o Prometeano está
     public void DefinirPosicao(Equipe equipe, int fila){
