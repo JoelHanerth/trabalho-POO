@@ -1,5 +1,5 @@
 public class Ciclope: Gregos{
-    public Ciclope(int tipo, string nome, int idade, double peso ): base(tipo, nome,idade,peso){
+    public Ciclope( string nome, int idade, double peso, Equipe equipe, int fila) : base(nome,idade,peso, equipe, fila){
         DanoAtaque = 35;
     }
         

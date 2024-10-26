@@ -2,21 +2,27 @@ public abstract class Guerreiro {
 
     // Atributos
     private string nome;
-    private int idade, tipo;
+    private int idade;
     private int danoAtaque;
     private double peso;
     protected int energia;
     private bool envenenado;
+    private Equipe equipeAtual;
+    private int filaAtual;
 
     // Construtor
-    public Guerreiro(int tipo, string nome, int idade, double peso) {
-        this.tipo = tipo;
+    public Guerreiro(string nome, int idade, double peso, Equipe equipe, int fila) {
         this.nome = nome;
         this.idade = idade;
         this.peso = peso;
+        this.equipeAtual = equipe;
+        this.filaAtual = fila;
         this.energia = 100;
         this.envenenado = false;
         this.danoAtaque = 0;
+
+        Console.WriteLine("{0} {1} criado", this, Nome);
+        ImprimirGuerreiro();
     }
 
     // Propriedades get e set
@@ -32,10 +38,6 @@ public abstract class Guerreiro {
         get { return peso; }
     }
 
-    public int Tipo {
-        get { return tipo; }
-    }
-
     public bool Envenenado {
         get { return envenenado; }
         set { envenenado = value; }
@@ -46,12 +48,21 @@ public abstract class Guerreiro {
         set { danoAtaque = value; }
     }
 
+    public Equipe EquipeAtual {
+        get { return equipeAtual; }
+    }
+
+    public int FilaAtual {
+        get { return filaAtual; }
+    }
+
     public virtual int Energia {
         get { return energia; }
         set { energia = value; }
     }
 
     // Métodos
+
     public virtual void Dano(int dano) {
         Energia -= dano;
     }

@@ -1,24 +1,20 @@
 using System.Globalization;
 
-public class Equipe
-{
+public class Equipe{
     private List<Guerreiro>[] vetorFila = new List<Guerreiro>[Configuracoes.TAMANHO_FILA];
 
-    public Equipe(string endereco, int nLado)
-    {
+    public Equipe(string endereco, int nLado){
         // procura o endereço dos arquivos que estão naquela pasta
         string[] files = Directory.GetFiles(endereco);
 
-        for (int i = 0; i < files.Length; i++)
-        {
+        for (int i = 0; i < files.Length; i++){
             // inicializa uma lista da posição dos vetores
             vetorFila[i] = new List<Guerreiro>();
 
             // retorna lista separada por linha
             string[] Guerreiros = File.ReadAllLines(files[i]);
 
-            for (int k = 0; k < Guerreiros.Length; k++)
-            {
+            for (int k = 0; k < Guerreiros.Length; k++){
                 // retorna lista das palavras daquela linha
                 string[] infGuerreiro = Guerreiros[k].Split(' ');
 
@@ -28,75 +24,64 @@ public class Equipe
     }
 
     // Adicionado parâmetro "filaAtual" para saber em qual fila o guerreiro está
-private void InstanciarGuerreiros(List<Guerreiro> fila, string[] infGuerreiro, int nLado, int filaAtual)
-{
+private void InstanciarGuerreiros(List<Guerreiro> fila, string[] infGuerreiro, int nLado, int filaAtual){
     // converte o tipo das variáveis
     int tipo = int.Parse(infGuerreiro[0]);
     string nome = infGuerreiro[1];
     int idade = int.Parse(infGuerreiro[2]);
     double peso = double.Parse(infGuerreiro[3], CultureInfo.InvariantCulture);
 
-    Guerreiro ?guerreiro = null;
 
-    if (nLado == 1)
-    {
-        switch (tipo)
-        {
+    if (nLado == 1){
+        switch (tipo){
             case 1:
-                guerreiro = new Ciclope(tipo, nome, idade, peso);
+                fila.Add(new Ciclope(nome, idade, peso, this, filaAtual));
                 break;
 
             case 2:
-                guerreiro = new Manticora(tipo, nome, idade, peso);
+                fila.Add(new Manticora(nome, idade, peso, this, filaAtual));
                 break;
 
             case 3:
-                guerreiro = new Hidra(tipo, nome, idade, peso);
+                fila.Add(new Hidra(nome, idade, peso, this, filaAtual));
                 break;
 
             case 4:
-                guerreiro = new Valquiria(tipo, nome, idade, peso);
+                fila.Add(new Valquiria(nome, idade, peso, this, filaAtual));
                 break;
 
             case 5:
-                guerreiro = new LoboDeFenris(tipo, nome, idade, peso);
+                fila.Add(new LoboDeFenris(nome, idade, peso, this, filaAtual));
+                break;
+            
+            case 6:
+                fila.Add(new GiganteDePedra(nome, idade, peso, this, filaAtual));
                 break;
         }
     }
-    else
-    {
-        switch (tipo)
-        {
+    else{
+        switch (tipo){
             case 1:
-                guerreiro = new Prometeano(tipo, nome, idade, peso);
+                fila.Add(new Prometeano(nome, idade, peso, this, filaAtual));
                 break;
             case 2:
-                guerreiro = new Satiro(tipo, nome, idade, peso);
+                fila.Add(new Satiro(nome, idade, peso, this, filaAtual));
                 break;
             case 3:
-                guerreiro = new Argus(tipo, nome, idade, peso);
+                fila.Add(new Argus(nome, idade, peso, this, filaAtual));
                 break;
             case 4:
-                guerreiro = new Anubita(tipo, nome, idade, peso);
+                fila.Add(new Anubita(nome, idade, peso, this, filaAtual));
                 break;
             case 5:
-                guerreiro = new HomemEscorpiao(tipo, nome, idade, peso);
+                fila.Add(new HomemEscorpiao(nome, idade, peso, this, filaAtual));
+                break;
+
+            case 6:
+                fila.Add(new Mumia(nome, idade, peso, this, filaAtual));
                 break;
         }
-    }
-
-    // Se o guerreiro for um Prometeano, definimos sua posição
-    if (guerreiro is Prometeano prometeano)
-    {
-        prometeano.DefinirPosicao(this, filaAtual); // Define o lado (this) e a fila atual
-    }
-
-    if (guerreiro != null){
-        fila.Add(guerreiro); // Adiciona o guerreiro à fila
-    }
-    
-
-    
+    }  
 }
 
     public void ImprimirEquipe(int n)

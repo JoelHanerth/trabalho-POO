@@ -1,2 +1,3 @@
 5 homemEscorpiao4 2 2.4
 3 argus4 12 1.76
+5 homemEscorpiao5 2 2.4

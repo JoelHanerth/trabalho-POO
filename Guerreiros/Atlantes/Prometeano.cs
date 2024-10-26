@@ -1,16 +1,11 @@
-public class Prometeano : Nordicos
+public class Prometeano : Atlantes
 {
     // Novos atributos para armazenar Lado e a fila do Prometeano
-    private Equipe equipeAtual;
-    private int filaAtual;
     private int energiaInicial;
 
-    public Prometeano(int tipo, string nome, int idade, double peso) : base(tipo, nome, idade, peso)
-    {
+    public Prometeano( string nome, int idade, double peso, Equipe equipe, int fila) : base(nome,idade,peso, equipe, fila){
         DanoAtaque = 10;
         energiaInicial = Energia;
-        equipeAtual = null!;
-        filaAtual = -1;
     }
 
     public int EnergiaInicial {
@@ -19,14 +14,9 @@ public class Prometeano : Nordicos
     }
     
 
-    // Métodos para definir o lado e a fila onde o Prometeano está
-    public void DefinirPosicao(Equipe equipe, int fila){
-        equipeAtual = equipe;
-        filaAtual = fila;
-    }
+    
 
-    public override void Dano(int dano)
-    {
+    public override void Dano(int dano){
         base.Dano(dano);
 
         // Verifica se o Prometeano morreu e se ainda pode ser duplicado
@@ -35,18 +25,16 @@ public class Prometeano : Nordicos
         }
     }
 
-    public override void Atacar(Equipe equipe1, Equipe equipe2, int fila, int filaInimigo, int round)
-    {
+    public override void Atacar(Equipe equipe1, Equipe equipe2, int fila, int filaInimigo, int round){
         base.Atacar(equipe1, equipe2, fila, filaInimigo, round);
     }
 
-    public void Duplicar()
-    {
+    public void Duplicar(){
         Console.WriteLine("Energia inicial do Prometeano: {0}", EnergiaInicial);
 
         // Cria dois descendentes do Prometeano original
-        Prometeano prometeano1 = new Prometeano(1, Nome + "1", Idade, Peso);
-        Prometeano prometeano2 = new Prometeano(1, Nome + "2", Idade, Peso);
+        Prometeano prometeano1 = new Prometeano(Nome + "1", Idade, Peso, EquipeAtual, FilaAtual);
+        Prometeano prometeano2 = new Prometeano(Nome + "2", Idade, Peso, EquipeAtual, FilaAtual);
 
         // Define a energia inicial e atual para 50% da energia original
         prometeano1.EnergiaInicial = EnergiaInicial / 2;
@@ -54,16 +42,13 @@ public class Prometeano : Nordicos
         prometeano1.Energia = prometeano1.EnergiaInicial;
         prometeano2.Energia = prometeano2.EnergiaInicial;
 
-        // Define a mesma posição (Lado e fila) para os descendentes
-        prometeano1.DefinirPosicao(equipeAtual, filaAtual);
-        prometeano2.DefinirPosicao(equipeAtual, filaAtual);
 
         // Imprime informações dos novos Prometeanos
         prometeano1.ImprimirGuerreiro();
         prometeano2.ImprimirGuerreiro();
 
         // Adiciona os descendentes ao final da fila de guerreiros
-        equipeAtual[filaAtual].Add(prometeano1);
-        equipeAtual[filaAtual].Add(prometeano2);
+        EquipeAtual[FilaAtual].Add(prometeano1);
+        EquipeAtual[FilaAtual].Add(prometeano2);
     }
 }

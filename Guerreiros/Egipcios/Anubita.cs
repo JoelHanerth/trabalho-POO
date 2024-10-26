@@ -1,5 +1,5 @@
-public class Anubita: Nordicos{
-    public Anubita(int tipo, string nome, int idade, double peso ): base(tipo, nome,idade,peso){
+public class Anubita: Egipcios{
+    public Anubita( string nome, int idade, double peso, Equipe equipe, int fila) : base(nome,idade,peso, equipe, fila){
         DanoAtaque = 15;
     }
         

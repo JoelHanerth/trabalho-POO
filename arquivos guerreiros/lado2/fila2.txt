@@ -1,5 +1,5 @@
-1 prometeano1 12 1.76
-3 argus1 6 1.5
+6 mumia1 12 1.76
+6 mumia2 6 1.5
 3 argus2 12 1.76
 2 satiro1 4 1.7
 3 argus3 6 1.5

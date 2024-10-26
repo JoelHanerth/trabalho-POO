@@ -1,5 +1,5 @@
 public class HomemEscorpiao: Egipcios{
-    public HomemEscorpiao(int tipo, string nome, int idade, double peso ): base(tipo, nome,idade,peso){
+    public HomemEscorpiao( string nome, int idade, double peso, Equipe equipe, int fila) : base(nome,idade,peso, equipe, fila){
         DanoAtaque = 20;
     }
         
