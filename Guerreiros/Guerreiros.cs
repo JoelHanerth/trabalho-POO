@@ -15,7 +15,6 @@ public abstract class Guerreiro {
         this.nome = nome;
         this.idade = idade;
         this.peso = peso;
-        // this.equipeAtual = equipe;
         this.fila = fila;
         this.energia = 100;
         this.envenenado = false;

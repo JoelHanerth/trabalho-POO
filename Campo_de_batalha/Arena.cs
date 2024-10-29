@@ -10,9 +10,9 @@ public class Arena{
 
     private Equipe equipe1, equipe2;
 
-    public Arena(Equipe equipe1, Equipe equipe2){
-        this.equipe1 = equipe1;
-        this.equipe2 = equipe2;
+    public Arena(string enderecoEquipe1, string enderecoEquipe2) {
+        equipe1 = new Equipe(enderecoEquipe1, 1);
+        equipe2 = new Equipe(enderecoEquipe2, 2);
     }
 
     public Equipe Equipe1{
@@ -33,30 +33,6 @@ public class Arena{
         set { ultimoInimigo = value; }
     }
 
-    private int SortearFila(){
-        Random random = new Random();
-        int numeroSorteado = random.Next(0, 2);
-        Console.WriteLine("NUMERO SORTEADO: {0}",numeroSorteado);
-        return numeroSorteado;
-    }
-
-    private void RemoverMortos(Equipe equipe){
-        for (int i = 0; i < Configuracoes.TAMANHO_FILA; i++){
-            equipe[i].RemoveAll(p => p.Energia <= 0);
-        }
-    }
-
-    public bool TemGuerreiro(Equipe equipe){
-        for (int i = 0; i < Configuracoes.TAMANHO_FILA; i++){
-            if (equipe[i].Count > 0){ return true; }
-        }
-        return false;
-    }
-
-
-
-
-    // Método para comparar dois Guerreiros
     public void MaisVelho(){
         Guerreiro? velho1 = equipe1.MaiorIdade();
         Guerreiro? velho2 = equipe2.MaiorIdade();
@@ -80,6 +56,26 @@ public class Arena{
         Guerreiro maisVelho = velho1.Idade > velho2.Idade ? velho1 : velho2;    
         maisVelho.ImprimirGuerreiro();
 
+    }
+
+    private int SortearFila(){
+        Random random = new Random();
+        int numeroSorteado = random.Next(0, 2);
+        Console.WriteLine("NUMERO SORTEADO: {0}",numeroSorteado);
+        return numeroSorteado;
+    }
+
+    private void RemoverMortos(Equipe equipe){
+        for (int i = 0; i < Configuracoes.TAMANHO_FILA; i++){
+            equipe[i].RemoveAll(p => p.Energia <= 0);
+        }
+    }
+
+    public bool TemGuerreiro(Equipe equipe){
+        for (int i = 0; i < Configuracoes.TAMANHO_FILA; i++){
+            if (equipe[i].Count > 0){ return true; }
+        }
+        return false;
     }
 
     public void MoverParaFinalFila(Equipe equipe){
@@ -109,54 +105,50 @@ public class Arena{
         return -1;
     }
 
-private int ObterUltimoGiganteDePedra(Equipe equipe) {
-    for (int i = Configuracoes.TAMANHO_FILA - 1; i >= 0; i--) { 
-        // Verifica se a fila tem guerreiros e se o primeiro é um Gigante de Pedra
-        if (equipe[i].Count > 0 && equipe[i][0] is GiganteDePedra) {
-            return i;
+    private int ObterUltimoGiganteDePedra(Equipe equipe) {
+        for (int i = Configuracoes.TAMANHO_FILA - 1; i >= 0; i--) { 
+            // Verifica se a fila tem guerreiros e se o primeiro é um Gigante de Pedra
+            if (equipe[i].Count > 0 && equipe[i][0] is GiganteDePedra giganteDePedra && giganteDePedra.Atacou) {
+                return i;
+            }
+        }
+        return -1; // Retorna -1 se não encontrar nenhum Gigante de Pedra
+    }
+
+    // Reseta o estado dos Gigantes de Pedra no início da rodada
+    private void ResetarEstadoGigantes(Equipe equipe){
+        for (int i = 0; i < Configuracoes.TAMANHO_FILA; i++){
+            if (equipe[i].Count >0 && equipe[i][0] is GiganteDePedra gigante){
+                gigante.Atacou = false; // Reseta a marcação
+            }
         }
     }
-    return -1; // Retorna -1 se não encontrar nenhum Gigante de Pedra
-}
 
-// Reseta o estado dos Gigantes de Pedra no início da rodada
-private void ResetarEstadoGigantes(Equipe equipe){
-    for (int i = 0; i < Configuracoes.TAMANHO_FILA; i++){
-        if (equipe[i].Count >0 && equipe[i][0] is GiganteDePedra gigante){
-            gigante.Atacou = false; // Reseta a marcação
+
+    private void Ataques(Equipe equipe1, Equipe equipe2, int round) {
+        Console.WriteLine();
+        // todos da primeira fila atacam
+        for (int filaAtacante = 0; filaAtacante < Configuracoes.TAMANHO_FILA; filaAtacante++) {
+            if (equipe1[filaAtacante].Count > 0 && TemGuerreiro(equipe2)) {
+                
+                int filaInimigo = IndiceAtacado(equipe2, filaAtacante);
+                
+                Guerreiro guerreiroAtacante = equipe1[filaAtacante][0];
+                Guerreiro guerreiroInimigo = equipe2[filaInimigo][0];
+                UltimoAtacante = guerreiroAtacante;
+                UltimoInimigo = guerreiroInimigo;
+
+                // Ataque e verificação de veneno
+                guerreiroAtacante.Atacar(equipe1, equipe2, filaAtacante, filaInimigo, round);
+                guerreiroAtacante.VerificarVeneno();
+
+                // Remover mortos
+                RemoverMortos(equipe1);
+                RemoverMortos(equipe2);
+            }
         }
+        if (round == 2){ ResetarEstadoGigantes(equipe1); }
     }
-}
-
-
-private void Ataques(Equipe equipe1, Equipe equipe2, int round) {
-    Console.WriteLine();
-    
-
-    // todos da primeira fila atacam
-    for (int filaAtacante = 0; filaAtacante < Configuracoes.TAMANHO_FILA; filaAtacante++) {
-        if (equipe1[filaAtacante].Count > 0 && TemGuerreiro(equipe2)) {
-            
-            int filaInimigo = IndiceAtacado(equipe2, filaAtacante);
-            
-            Guerreiro guerreiroAtacante = equipe1[filaAtacante][0];
-            Guerreiro guerreiroInimigo = equipe2[filaInimigo][0];
-            UltimoAtacante = guerreiroAtacante;
-            UltimoInimigo = guerreiroInimigo;
-
-            // Ataque e verificação de veneno
-            guerreiroAtacante.Atacar(equipe1, equipe2, filaAtacante, filaInimigo, round);
-            guerreiroAtacante.VerificarVeneno();
-
-            // Remover mortos
-            RemoverMortos(equipe1);
-            RemoverMortos(equipe2);
-        }
-    }
-    if (round == 2){ ResetarEstadoGigantes(equipe1); }
-}
-
-
 
     private void Ringue(){
         int primeiroAtaque = SortearFila();
@@ -168,6 +160,39 @@ private void Ataques(Equipe equipe1, Equipe equipe2, int round) {
             Ataques(equipe2, equipe1, 1);
             Ataques(equipe1, equipe2, 2);
         }  
+    }
+
+    public void ImprimirVendedor(){
+        bool temGuerreiroEquipe1 = TemGuerreiro(Equipe1);
+        bool temGuerreiroEquipe2 = TemGuerreiro(Equipe2);
+
+        if (!temGuerreiroEquipe1 && !temGuerreiroEquipe2){
+            Console.WriteLine("EMPATE");
+            return;
+        }
+
+        if (temGuerreiroEquipe1){
+            Console.WriteLine("Atlantes e Egípcios ganharam!");
+            ImprimirUltimosAtacantes("Gregos e Nórdigos");
+        }
+        else{
+            Console.WriteLine("Gregos e Nórdigos ganharam!");
+            ImprimirUltimosAtacantes("Atlantes e Egípcios");
+        }
+    }
+
+    private void ImprimirUltimosAtacantes( string equipeVencedora){
+        if (UltimoInimigo != null){
+            Console.Write($"O último a ser derrotado no lado dos {equipeVencedora} foi: ");
+            UltimoInimigo.ImprimirGuerreiro();
+
+            if (UltimoAtacante != null){
+                Console.WriteLine();
+                UltimoAtacante.ImprimirGuerreiro();
+                Console.Write($"transferiu o último ataque no ");
+                UltimoInimigo.ImprimirGuerreiro(); 
+            }
+        }
     }
 
     public void CampoBatalha(){
