@@ -1,6 +1,6 @@
 public class Valquiria: Nordicos{
     private int cura = 20;
-    public Valquiria( string nome, int idade, double peso, Equipe equipe, int fila) : base(nome,idade,peso, equipe, fila){
+    public Valquiria( string nome, int idade, double peso, List<Guerreiro> fila) : base(nome,idade,peso, fila){
         DanoAtaque = 20;
     }
         

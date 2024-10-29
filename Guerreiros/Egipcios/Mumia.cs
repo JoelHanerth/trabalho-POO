@@ -1,5 +1,5 @@
 public class Mumia: Egipcios{
-    public Mumia( string nome, int idade, double peso, Equipe equipe, int fila) : base(nome,idade,peso, equipe, fila){
+    public Mumia( string nome, int idade, double peso, List<Guerreiro> fila) : base(nome,idade,peso, fila){
         DanoAtaque = 50;
     }
 
@@ -17,13 +17,13 @@ public class Mumia: Egipcios{
         // caso tenha matado o inimigo, crie um morto vivo
         if (!guerreiroInimigo.EstaVivo()){
             // equipe1[fila].Insert(0, new MortoVivo(guerreiroInimigo.Nome, guerreiroInimigo.Idade, guerreiroInimigo.Peso, EquipeAtual, FilaAtual));
-            equipe1[fila].Add(new MortoVivo(guerreiroInimigo.Nome, guerreiroInimigo.Idade, guerreiroInimigo.Peso, EquipeAtual, FilaAtual));
+            Fila.Add(new MortoVivo(guerreiroInimigo.Nome, guerreiroInimigo.Idade, guerreiroInimigo.Peso, Fila));
         }
     }
 
     private void Invocar(){
         for (int i = 0; i < 4; i++){
-            EquipeAtual[FilaAtual].Add(new Anubita(Nome, 0, 60, EquipeAtual, FilaAtual));
+            Fila.Add(new Anubita(Nome, 0, 60, Fila));
         }
     }
 }

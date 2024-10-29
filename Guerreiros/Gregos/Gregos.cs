@@ -1,5 +1,5 @@
 public abstract class Gregos: Guerreiro{
-    public Gregos( string nome, int idade, double peso, Equipe equipe, int fila) : base(nome,idade,peso, equipe, fila){
+    public Gregos( string nome, int idade, double peso, List<Guerreiro> fila) : base(nome,idade,peso, fila){
 
     }
 

@@ -11,7 +11,7 @@ public class Arena{
     private Equipe equipe1, equipe2;
 
     public Arena(Equipe equipe1, Equipe equipe2){
-        this.equipe1 = equipe1; //equipe
+        this.equipe1 = equipe1;
         this.equipe2 = equipe2;
     }
 

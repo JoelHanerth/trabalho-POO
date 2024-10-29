@@ -1,7 +1,7 @@
 public class LoboDeFenris: Nordicos{
     private int danoAdicional = 8;
     private int danoInicial = 40;
-    public LoboDeFenris( string nome, int idade, double peso, Equipe equipe, int fila) : base(nome,idade,peso, equipe, fila){
+    public LoboDeFenris( string nome, int idade, double peso, List<Guerreiro> fila) : base(nome,idade,peso, fila){
         DanoAtaque = danoInicial; 
     }
 

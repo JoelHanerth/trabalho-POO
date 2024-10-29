@@ -42,35 +42,18 @@ static void ImprimirUltimosAtacantes( string equipeVencedora){
 
     static void Main(string[] args)
     {
-        // Lado lado1 = new Lado(@"C:\Users\adm\Documents\trabalho poo c#\trabalho-POO\arquivos guerreiros\lado1");
-        // Lado lado2 = new Lado(@"C:\Users\adm\Documents\trabalho poo c#\trabalho-POO\arquivos guerreiros\lado2");
         Equipe equipe1 = new Equipe(@"arquivos guerreiros\lado1", 1);
         Equipe equipe2 = new Equipe(@"arquivos guerreiros\lado2", 2);
-
-        // Lado lado1 = new Lado(@"arquivos guerreiros\lado1", 1);
-        // Lado lado2 = new Lado(@"arquivos guerreiros\lado2", 2);
 
         equipe1.ImprimirEquipe(1);
         equipe2.ImprimirEquipe(2);
 
-        // lado1.ImprimirLado(1);
-        // lado2.ImprimirLado(2);
-
-        Console.WriteLine("Gregos e Nórdicos pesam {0}kg", equipe1.SomaPeso());
-        Console.WriteLine("Atlantes e Egípcios pesam {0}kg", equipe2.SomaPeso());
+        Console.WriteLine("\nGregos e Nórdicos pesam {0:F2}kg", equipe1.SomaPeso());
+        Console.WriteLine("Atlantes e Egípcios pesam {0:F2}kg", equipe2.SomaPeso());
 
 
         Arena arena = new Arena(equipe1, equipe2);
         arena.CampoBatalha();
-
-        // criar lista;
-        // arena.addlado()
-
-        // arena.MaisVelho();
-
-        // Arena.MaisVelho(lado1,lado2);
-
-        // Arena.CampoBatalha(lado1, lado2);
 
         ImprimirVendedor(arena);
 

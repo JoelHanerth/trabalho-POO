@@ -1,7 +1,7 @@
 public class GiganteDePedra : Nordicos{
     public bool Atacou { get; set; } = false; // Marca se o gigante atacou
 
-    public GiganteDePedra( string nome, int idade, double peso, Equipe equipe, int fila) : base(nome,idade,peso, equipe, fila){
+    public GiganteDePedra( string nome, int idade, double peso, List<Guerreiro> fila) : base(nome,idade,peso, fila){
         DanoAtaque = 30;
         Energia = 300;
     }

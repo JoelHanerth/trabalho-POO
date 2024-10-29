@@ -1,7 +1,7 @@
 public class Hidra: Gregos{
     private int danoAdicional = 5;
     // private int cura;
-    public Hidra( string nome, int idade, double peso, Equipe equipe, int fila) : base(nome,idade,peso, equipe, fila){
+    public Hidra( string nome, int idade, double peso, List<Guerreiro> fila) : base(nome,idade,peso, fila){
         DanoAtaque = 50;
     }
         

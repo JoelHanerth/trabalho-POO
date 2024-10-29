@@ -7,16 +7,16 @@ public abstract class Guerreiro {
     private double peso;
     protected int energia;
     private bool envenenado;
-    private Equipe equipeAtual;
-    private int filaAtual;
+    // private Equipe equipeAtual;
+    private List<Guerreiro> fila;
 
     // Construtor
-    public Guerreiro(string nome, int idade, double peso, Equipe equipe, int fila) {
+    public Guerreiro(string nome, int idade, double peso, List<Guerreiro> fila) {
         this.nome = nome;
         this.idade = idade;
         this.peso = peso;
-        this.equipeAtual = equipe;
-        this.filaAtual = fila;
+        // this.equipeAtual = equipe;
+        this.fila = fila;
         this.energia = 100;
         this.envenenado = false;
         this.danoAtaque = 0;
@@ -48,12 +48,12 @@ public abstract class Guerreiro {
         set { danoAtaque = value; }
     }
 
-    public Equipe EquipeAtual {
-        get { return equipeAtual; }
-    }
+    // public Equipe EquipeAtual {
+    //     get { return equipeAtual; }
+    // }
 
-    public int FilaAtual {
-        get { return filaAtual; }
+    public List<Guerreiro> Fila {
+        get { return fila; }
     }
 
     public virtual int Energia {

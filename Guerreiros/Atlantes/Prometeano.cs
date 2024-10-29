@@ -3,7 +3,7 @@ public class Prometeano : Atlantes
     // Novos atributos para armazenar Lado e a fila do Prometeano
     private int energiaInicial;
 
-    public Prometeano( string nome, int idade, double peso, Equipe equipe, int fila) : base(nome,idade,peso, equipe, fila){
+    public Prometeano( string nome, int idade, double peso, List<Guerreiro> fila) : base(nome,idade,peso, fila){
         DanoAtaque = 10;
         energiaInicial = Energia;
     }
@@ -33,8 +33,8 @@ public class Prometeano : Atlantes
         Console.WriteLine("Energia inicial do Prometeano: {0}", EnergiaInicial);
 
         // Cria dois descendentes do Prometeano original
-        Prometeano prometeano1 = new Prometeano(Nome + "1", Idade, Peso, EquipeAtual, FilaAtual);
-        Prometeano prometeano2 = new Prometeano(Nome + "2", Idade, Peso, EquipeAtual, FilaAtual);
+        Prometeano prometeano1 = new Prometeano(Nome + "1", Idade, Peso, Fila);
+        Prometeano prometeano2 = new Prometeano(Nome + "2", Idade, Peso, Fila);
 
         // Define a energia inicial e atual para 50% da energia original
         prometeano1.EnergiaInicial = EnergiaInicial / 2;
@@ -48,7 +48,7 @@ public class Prometeano : Atlantes
         prometeano2.ImprimirGuerreiro();
 
         // Adiciona os descendentes ao final da fila de guerreiros
-        EquipeAtual[FilaAtual].Add(prometeano1);
-        EquipeAtual[FilaAtual].Add(prometeano2);
+        Fila.Add(prometeano1);
+        Fila.Add(prometeano2);
     }
 }

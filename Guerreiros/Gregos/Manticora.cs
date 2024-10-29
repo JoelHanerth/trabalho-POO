@@ -2,7 +2,7 @@ public class Manticora: Gregos{
     private int danoAtaqueBase = 30;
     private int danoAtaqueProximo = 15;
 
-    public Manticora( string nome, int idade, double peso, Equipe equipe, int fila) : base(nome,idade,peso, equipe, fila){
+    public Manticora( string nome, int idade, double peso,List<Guerreiro> fila) : base(nome,idade,peso, fila){
         DanoAtaque = danoAtaqueBase;
     }
         

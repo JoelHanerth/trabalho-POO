@@ -35,50 +35,50 @@ private void InstanciarGuerreiros(List<Guerreiro> fila, string[] infGuerreiro, i
     if (nLado == 1){
         switch (tipo){
             case 1:
-                fila.Add(new Ciclope(nome, idade, peso, this, filaAtual));
+                fila.Add(new Ciclope(nome, idade, peso, fila));
                 break;
 
             case 2:
-                fila.Add(new Manticora(nome, idade, peso, this, filaAtual));
+                fila.Add(new Manticora(nome, idade, peso, fila));
                 break;
 
             case 3:
-                fila.Add(new Hidra(nome, idade, peso, this, filaAtual));
+                fila.Add(new Hidra(nome, idade, peso, fila));
                 break;
 
             case 4:
-                fila.Add(new Valquiria(nome, idade, peso, this, filaAtual));
+                fila.Add(new Valquiria(nome, idade, peso, fila));
                 break;
 
             case 5:
-                fila.Add(new LoboDeFenris(nome, idade, peso, this, filaAtual));
+                fila.Add(new LoboDeFenris(nome, idade, peso, fila));
                 break;
             
             case 6:
-                fila.Add(new GiganteDePedra(nome, idade, peso, this, filaAtual));
+                fila.Add(new GiganteDePedra(nome, idade, peso, fila));
                 break;
         }
     }
     else{
         switch (tipo){
             case 1:
-                fila.Add(new Prometeano(nome, idade, peso, this, filaAtual));
+                fila.Add(new Prometeano(nome, idade, peso, fila));
                 break;
             case 2:
-                fila.Add(new Satiro(nome, idade, peso, this, filaAtual));
+                fila.Add(new Satiro(nome, idade, peso, fila));
                 break;
             case 3:
-                fila.Add(new Argus(nome, idade, peso, this, filaAtual));
+                fila.Add(new Argus(nome, idade, peso, fila));
                 break;
             case 4:
-                fila.Add(new Anubita(nome, idade, peso, this, filaAtual));
+                fila.Add(new Anubita(nome, idade, peso, fila));
                 break;
             case 5:
-                fila.Add(new HomemEscorpiao(nome, idade, peso, this, filaAtual));
+                fila.Add(new HomemEscorpiao(nome, idade, peso, fila));
                 break;
 
             case 6:
-                fila.Add(new Mumia(nome, idade, peso, this, filaAtual));
+                fila.Add(new Mumia(nome, idade, peso, fila));
                 break;
         }
     }  

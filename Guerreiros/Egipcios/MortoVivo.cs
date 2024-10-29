@@ -1,5 +1,5 @@
 public class MortoVivo: Mumia{
-    public MortoVivo( string nome, int idade, double peso, Equipe equipe, int fila) : base(nome,idade,peso, equipe, fila){
+    public MortoVivo( string nome, int idade, double peso, List<Guerreiro> fila) : base(nome,idade,peso, fila){
         DanoAtaque = 5;
     }
       
